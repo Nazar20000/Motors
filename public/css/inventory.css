@@ -1,4 +1,4 @@
-/* Inventory Page Specific Styles */
+/* Inventory Page Specific Styles - FIXED VERSION */
 .inventory-page {
     margin-top: 70px;
     padding: 40px 0;
@@ -12,7 +12,7 @@
     gap: 40px;
 }
 
-/* Filters Sidebar */
+/* Filters Sidebar - IMPROVED */
 .filters-sidebar {
     background-color: #2a2a2a;
     padding: 30px 20px;
@@ -43,6 +43,14 @@
     padding: 15px 0;
     border-bottom: 1px solid #444;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-group:hover {
+    background-color: rgba(255, 255, 0, 0.1);
+    border-radius: 5px;
+    margin: 0 -10px 20px -10px;
+    padding: 15px 10px;
 }
 
 .filter-group h3 {
@@ -51,11 +59,51 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: color 0.3s;
+}
+
+.filter-group.active h3 {
+    color: #ffff00;
 }
 
 .filter-group .material-symbols-outlined {
     color: #cccccc;
     font-size: 20px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.filter-group.active .material-symbols-outlined {
+    transform: rotate(180deg);
+    color: #ffff00;
+}
+
+.filter-options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-top: 0;
+}
+
+.filter-options.active {
+    max-height: 200px;
+    margin-top: 15px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #cccccc;
+    font-size: 13px;
+}
+
+.filter-option input[type="checkbox"] {
+    accent-color: #ffff00;
+}
+
+.filter-option:hover {
+    color: #ffffff;
 }
 
 .reset-filters {
@@ -67,15 +115,17 @@
     cursor: pointer;
     width: 100%;
     margin-top: 20px;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    font-weight: bold;
 }
 
 .reset-filters:hover {
     background-color: #ffff00;
     color: #000;
+    transform: translateY(-2px);
 }
 
-/* Inventory Content */
+/* Inventory Content - IMPROVED */
 .inventory-content {
     background-color: #2a2a2a;
     border-radius: 8px;
@@ -89,12 +139,15 @@
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid #444;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .sort-section {
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .sort-section label {
@@ -103,26 +156,38 @@
     gap: 5px;
     color: #ffffff;
     font-size: 14px;
+    cursor: pointer;
+}
+
+.sort-section input[type="checkbox"] {
+    accent-color: #ffff00;
 }
 
 .sort-select {
     background-color: #333;
     color: #ffffff;
-    border: none;
+    border: 1px solid #555;
     padding: 8px 12px;
     border-radius: 3px;
     font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #ffff00;
 }
 
 .results-info {
     color: #cccccc;
     font-size: 14px;
+    white-space: nowrap;
 }
 
-/* Inventory Grid */
+/* Inventory Grid - IMPROVED */
 .inventory-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     margin-bottom: 40px;
 }
@@ -131,11 +196,14 @@
     background-color: #1a1a1a;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .inventory-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    border-color: #ffff00;
+    box-shadow: 0 10px 30px rgba(255, 255, 0, 0.1);
 }
 
 .card-header {
@@ -152,10 +220,17 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.compare-checkbox:hover {
+    color: #ffff00;
 }
 
 .compare-checkbox input {
     margin-right: 5px;
+    accent-color: #ffff00;
 }
 
 .card-actions {
@@ -167,10 +242,16 @@
 .favorite {
     color: #cccccc;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    font-size: 24px;
 }
 
 .favorite:hover {
+    color: #ffff00;
+    transform: scale(1.1);
+}
+
+.favorite.active {
     color: #ffff00;
 }
 
@@ -178,27 +259,40 @@
     background-color: #ffff00;
     color: #000;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 3px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    white-space: nowrap;
 }
 
 .apply-online-btn:hover {
     background-color: #e6e600;
+    transform: translateY(-1px);
+}
+
+.apply-online-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .vehicle-image {
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .vehicle-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.inventory-card:hover .vehicle-image img {
+    transform: scale(1.05);
 }
 
 .vehicle-details {
@@ -209,6 +303,11 @@
     color: #ffffff;
     font-size: 16px;
     margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.inventory-card:hover .vehicle-details h3 {
+    color: #ffff00;
 }
 
 .price-tag {
@@ -220,6 +319,19 @@
     font-weight: bold;
     display: inline-block;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.price-tag::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid #ffff00;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
 }
 
 .specs {
@@ -235,6 +347,13 @@
     gap: 8px;
     color: #cccccc;
     font-size: 12px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.spec-item:hover {
+    background-color: rgba(255, 255, 0, 0.1);
 }
 
 .spec-item .material-symbols-outlined {
@@ -254,6 +373,11 @@
     border-radius: 5px;
     text-align: center;
     font-size: 10px;
+    transition: background-color 0.3s;
+}
+
+.carfax-badge:hover {
+    background-color: #444;
 }
 
 .carfax-badge span {
@@ -278,6 +402,10 @@
     background-color: #4CAF50;
 }
 
+.carfax-value.great {
+    background-color: #2E7D32;
+}
+
 .cargurus-badge {
     display: flex;
     align-items: center;
@@ -289,24 +417,32 @@
     border-radius: 5px;
     font-size: 10px;
     font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cargurus-badge:hover {
+    background-color: #45a049;
 }
 
 .cargurus-text {
     font-style: italic;
 }
 
-/* Pagination */
+/* Pagination - IMPROVED */
 .pagination {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .page-numbers {
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .page-number {
@@ -315,24 +451,40 @@
     padding: 8px 12px;
     border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    min-width: 40px;
+    text-align: center;
 }
 
 .page-number.active {
     background-color: #ffff00;
     color: #000;
+    border-color: #ffff00;
 }
 
-.page-number:hover {
-    background-color: #ffff00;
-    color: #000;
+.page-number:hover:not(.active) {
+    background-color: #555;
+    border-color: #ffff00;
 }
 
 .page-dots {
     color: #cccccc;
+    padding: 0 5px;
 }
 
-/* Recently Viewed Section */
+.pagination .material-symbols-outlined {
+    color: #cccccc;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 24px;
+}
+
+.pagination .material-symbols-outlined:hover {
+    color: #ffff00;
+}
+
+/* Recently Viewed Section - IMPROVED */
 .recently-viewed {
     background-color: #2a2a2a;
     padding: 60px 0;
@@ -347,7 +499,7 @@
 
 .recently-viewed-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -355,11 +507,13 @@
     background-color: #1a1a1a;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
 .recently-viewed-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .card-image {
@@ -372,6 +526,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.recently-viewed-card:hover .card-image img {
+    transform: scale(1.1);
 }
 
 .card-overlay {
@@ -380,11 +539,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .card-overlay h3 {
     color: #ffffff;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
@@ -405,32 +567,81 @@
     font-weight: bold;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Loading states */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #333;
+    border-top: 3px solid #ffff00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design - IMPROVED */
+@media (max-width: 1200px) {
     .inventory-layout {
-        grid-template-columns: 250px 1fr;
+        grid-template-columns: 280px 1fr;
+        gap: 30px;
     }
     
     .inventory-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    .inventory-layout {
+        grid-template-columns: 250px 1fr;
+        gap: 25px;
+    }
+    
+    .inventory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .filters-sidebar {
+        padding: 20px 15px;
     }
 }
 
 @media (max-width: 768px) {
     .inventory-layout {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .filters-sidebar {
         order: 2;
+        position: static;
+        margin-top: 20px;
     }
     
     .inventory-content {
         order: 1;
+        padding: 20px;
     }
     
     .inventory-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
     }
     
     .recently-viewed-grid {
@@ -439,7 +650,67 @@
     
     .inventory-toolbar {
         flex-direction: column;
+        align-items: stretch;
         gap: 15px;
-        align-items: flex-start;
+    }
+    
+    .sort-section {
+        justify-content: space-between;
+    }
+    
+    .results-info {
+        text-align: center;
+    }
+    
+    .pagination {
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .specs {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .card-actions {
+        justify-content: space-between;
+    }
+    
+    .page-numbers {
+        justify-content: center;
+    }
+    
+    .recently-viewed h2 {
+        font-size: 20px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .filters-sidebar,
+    .pagination,
+    .card-actions {
+        display: none;
+    }
+    
+    .inventory-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-card {
+        break-inside: avoid;
+        margin-bottom: 20px;
     }
 }

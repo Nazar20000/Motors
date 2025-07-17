@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentImageIndex = 0;
     const images = [
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600'
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg'
     ];
 
     // Thumbnail click functionality
