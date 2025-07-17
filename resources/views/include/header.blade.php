@@ -2,7 +2,7 @@
 <header class="header">
     <div class="container">
         <div class="logo">
-            <span class="logo-text">BUCKET<br>BUDDY</span>
+            <span class="logo-text">D.N B<br>Motors V</span>
             <span class="logo-subtext">auto llc</span>
         </div>
         <nav class="nav">
@@ -12,7 +12,7 @@
             <a href="#" class="nav-link">Apply Online</a>
             <a href="#" class="nav-link">About Us</a>
             <a href="#" class="nav-link">Contact Us</a>
-            <span class="material-symbols-outlined search-icon">🔍</span>
+            <span class="material-symbols-outlined search-icon">search</span>
         </nav>
     </div>
 </header>

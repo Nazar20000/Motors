@@ -202,11 +202,11 @@
             <div class="welcome-content">
                 <div class="welcome-text">
                     <h3>WELCOME TO</h3>
-                    <h2>BucketBuddy Auto LLC</h2>
+                    <h2>D.N B Motors V</h2>
                     <p>We are dedicated to providing the ultimate automobile buying experience. Our</p>
                 </div>
                 <div class="welcome-image">
-                    <img src="/img/banner.jpg" alt="Bucket Buddy Auto Building">
+                    <img src="/img/banner.jpg" alt="D.N B Motors V">
                 </div>
             </div>
         </div>
