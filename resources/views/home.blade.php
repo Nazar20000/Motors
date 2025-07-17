@@ -13,6 +13,7 @@
 
 @section('content')
 
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -26,12 +27,16 @@
                     <option>2024</option>
                     <option>2023</option>
                     <option>2022</option>
+                    <option>2021</option>
+                    <option>2020</option>
                 </select>
                 <select class="search-select">
                     <option>Any Make</option>
                     <option>Tesla</option>
                     <option>BMW</option>
                     <option>Mercedes</option>
+                    <option>Audi</option>
+                    <option>Porsche</option>
                 </select>
                 <select class="search-select">
                     <option>Any Model</option>
@@ -44,6 +49,7 @@
                     <option>Sedan</option>
                     <option>SUV</option>
                     <option>Coupe</option>
+                    <option>Hatchback</option>
                 </select>
                 <button class="search-btn">SEARCH</button>
             </div>
@@ -58,20 +64,17 @@
                 <div class="step">
                     <span class="material-symbols-outlined step-icon">home</span>
                     <h3>Search Our Inventory</h3>
-                    <p>Let us know exactly what you're in the market for and we'll help you find it. With access to auctions
-                        and exclusive industry sources, we can help you get into the ride you want.</p>
+                    <p>Let us know exactly what you're in the market for and we'll help you find it. With access to auctions and exclusive industry sources, we can help you get into the ride you want.</p>
                 </div>
                 <div class="step">
                     <span class="material-symbols-outlined step-icon">person</span>
                     <h3>Schedule Test Drive</h3>
-                    <p>The best way to help make your final decision is to test drive your dream car. It lets you experience
-                        the thrill of the vehicle for yourself. Our friendly, experienced staff are here to help!</p>
+                    <p>The best way to help make your final decision is to test drive your dream car. It lets you experience the thrill of the vehicle for yourself. Our friendly, experienced staff are here to help!</p>
                 </div>
                 <div class="step">
                     <span class="material-symbols-outlined step-icon">check_circle</span>
                     <h3>Get Approved Today</h3>
-                    <p>With relations with multiple lenders, we are bound to get you financed! Good Credit, Bad Credit,
-                        First Time Buyer? Our lenders work with all types of scores and situations.</p>
+                    <p>With relations with multiple lenders, we are bound to get you financed! Good Credit, Bad Credit, First Time Buyer? Our lenders work with all types of scores and situations.</p>
                 </div>
             </div>
         </div>
@@ -165,32 +168,56 @@
     <section class="popular-makes">
         <div class="container">
             <h2>POPULAR MAKES</h2>
-            <div class="makes-slider">
-                <button class="slider-btn prev">
-                    <span class="material-symbols-outlined"><</span>
+            <div class="makes-slider-container">
+                <button class="slider-btn prev" id="prevBtn">
+                    <span class="material-symbols-outlined">chevron_left</span>
                 </button>
-                <div class="makes-grid">
-                    <div class="make-item">
-                        <img src="/resurs/2.jpeg" alt="Honda">
+                <div class="makes-slider-wrapper">
+                    <div class="makes-slider" id="makesSlider">
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Honda">
+                            <span>HONDA</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Hyundai">
+                            <span>HYUNDAI</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Kia">
+                            <span>KIA</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Land Rover">
+                            <span>LAND ROVER</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="BMW">
+                            <span>BMW</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Mercedes">
+                            <span>MERCEDES</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Audi">
+                            <span>AUDI</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Tesla">
+                            <span>TESLA</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Audi">
+                            <span>AUDI</span>
+                        </div>
+                        <div class="make-item">
+                            <img src="./img/banner.jpg" alt="Tesla">
+                            <span>TESLA</span>
+                        </div>
                     </div>
-                    <div class="make-item">
-                        <img src="/resurs/1.png" alt="Hyundai">
-                    </div>
-                    <div class="make-item">
-                        <img src="/resurs/3.jpeg" alt="Kia">
-                    </div>
-                    <div class="make-item">
-                        <img src="/resurs/4.png" alt="Land Rover">
-                    </div>
-                    <!-- <div class="make-item">
-                        <img src="/resurs/5.jpeg" alt="Land Rover">
-                    </div>
-                    <div class="make-item">
-                        <img src="/resurs/car.jpeg" alt="Land Rover">
-                    </div> -->
                 </div>
-                <button class="slider-btn next">
-                    <span class="material-symbols-outlined">></span>
+                <button class="slider-btn next" id="nextBtn">
+                    <span class="material-symbols-outlined">chevron_right</span>
                 </button>
             </div>
         </div>
@@ -202,16 +229,15 @@
             <div class="welcome-content">
                 <div class="welcome-text">
                     <h3>WELCOME TO</h3>
-                    <h2>D.N B Motors V</h2>
-                    <p>We are dedicated to providing the ultimate automobile buying experience. Our</p>
+                    <h2>BucketBuddy Auto LLC</h2>
+                    <p>We are dedicated to providing the ultimate automobile buying experience. Our experienced team is here to help you find the perfect vehicle that fits your needs and budget. With our extensive inventory and competitive pricing, we make car buying simple and enjoyable.</p>
                 </div>
                 <div class="welcome-image">
-                    <img src="/img/banner.jpg" alt="D.N B Motors V">
+                    <img src="./img/person.png" alt="Bucket Buddy Auto Building">
                 </div>
             </div>
         </div>
     </section>
-
     
 @push('scripts')
     <script src="./js/script.js"></script>

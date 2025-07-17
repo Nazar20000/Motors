@@ -12,7 +12,6 @@
 @endpush
 
 
-
 @section('content')
  <main class="inventory-page">
         <div class="container">
