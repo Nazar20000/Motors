@@ -6,8 +6,8 @@
             <span class="logo-subtext">auto llc</span>
         </div>
         <nav class="nav">
-            <a href="#" class="nav-link active">Home</a>
-            <a href="inventory.html" class="nav-link">Inventory</a>
+            <a href="{{ route('home') }}" class="nav-link active">Home</a>
+            <a href="{{ route('inventory') }}" class="nav-link">Inventory</a>
             <a href="#" class="nav-link">Car Finder</a>
             <a href="#" class="nav-link">Apply Online</a>
             <a href="#" class="nav-link">About Us</a>
