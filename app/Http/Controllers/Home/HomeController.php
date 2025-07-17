@@ -11,6 +11,7 @@ class HomeController extends Controller
 
         return view('home');
     }
+    
      public function inventory(){
 
         return view('inventory');

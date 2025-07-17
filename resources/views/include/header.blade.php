@@ -12,7 +12,7 @@
             <a href="#" class="nav-link">Apply Online</a>
             <a href="#" class="nav-link">About Us</a>
             <a href="#" class="nav-link">Contact Us</a>
-            <span class="material-symbols-outlined search-icon">search</span>
+            <span class="material-symbols-outlined search-icon">🔍</span>
         </nav>
     </div>
 </header>
