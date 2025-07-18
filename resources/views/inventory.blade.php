@@ -118,7 +118,7 @@
                                         <span>AUTOMATIC</span>
                                     </div>
                                     <div class="spec-item">
-                                        <span class="material-symbols-outlined">all_wheel_drive</span>
+                                        <span class="material-symbols-outlined">settings</span>
                                         <span>RWD</span>
                                     </div>
                                     <div class="spec-item">
@@ -180,7 +180,7 @@
                                         <span>AUTOMATIC</span>
                                     </div>
                                     <div class="spec-item">
-                                        <span class="material-symbols-outlined">all_wheel_drive</span>
+                                        <span class="material-symbols-outlined">settings</span>
                                         <span>RWD</span>
                                     </div>
                                     <div class="spec-item">
@@ -246,7 +246,7 @@
                                         <span>AUTOMATIC</span>
                                     </div>
                                     <div class="spec-item">
-                                        <span class="material-symbols-outlined">all_wheel_drive</span>
+                                        <span class="material-symbols-outlined">settings</span>
                                         <span>RWD</span>
                                     </div>
                                     <div class="spec-item">

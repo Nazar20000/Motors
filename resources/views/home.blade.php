@@ -9,12 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
 
-
-
 @section('content')
-
-
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -56,7 +51,6 @@
         </div>
     </section>
 
-    <!-- How Easy Section -->
     <section class="how-easy">
         <div class="container">
             <h2>HOW EASY IS BUYING A CAR FROM US?</h2>
@@ -80,7 +74,6 @@
         </div>
     </section>
 
-    <!-- Featured Vehicles -->
     <section class="featured-vehicles">
         <div class="container">
             <h2>FEATURED VEHICLES</h2>
@@ -164,7 +157,6 @@
         </div>
     </section>
 
-    <!-- Popular Makes -->
     <section class="popular-makes">
         <div class="container">
             <h2>POPULAR MAKES</h2>
@@ -223,7 +215,6 @@
         </div>
     </section>
 
-    <!-- Welcome Section -->
     <section class="welcome">
         <div class="container">
             <div class="welcome-content">
