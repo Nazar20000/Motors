@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="spec-item">
-                        <span class="material-symbols-outlined">all_wheel_drive</span>
+                        <span class="material-symbols-outlined">electric_bolt</span>
                         <span class="spec-label">Drivetrain :</span>
                         <span class="spec-value">RWD</span>
                     </div>

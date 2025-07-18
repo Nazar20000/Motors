@@ -229,8 +229,18 @@
             <div class="welcome-content">
                 <div class="welcome-text">
                     <h3>WELCOME TO</h3>
-                    <h2>BucketBuddy Auto LLC</h2>
-                    <p>We are dedicated to providing the ultimate automobile buying experience. Our experienced team is here to help you find the perfect vehicle that fits your needs and budget. With our extensive inventory and competitive pricing, we make car buying simple and enjoyable.</p>
+                    <h2>BD.N B MOTORS V</h2>
+                    <p>At D.N B Motors V, we’re committed to providing the ultimate automobile 
+                        buying experience. As your #1 source for high-quality pre-owned vehicles, 
+                        we take pride in offering exceptional value and a smooth, 
+                        stress-free process from start to finish.
+                        Thanks to our strong relationships within the dealer community, 
+                        we’re able to source a wide selection of lease returns and trade-ins 
+                        at outstanding prices — and we pass those savings directly on to you.
+                        We also provide a full range of financing options tailored to your needs, 
+                        whether you're buying your first car or upgrading to your next one.
+                        If you need help with any part of the buying process, please don’t hesitate 
+                        to contact us. We’re here to help you every step of the way.</p>
                 </div>
                 <div class="welcome-image">
                     <img src="./img/person.png" alt="Bucket Buddy Auto Building">
