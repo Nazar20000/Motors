@@ -16,4 +16,9 @@ class HomeController extends Controller
 
         return view('inventory');
     }
+
+         public function detalis(){
+
+        return view('detalis');
+    }
 }

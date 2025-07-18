@@ -83,6 +83,7 @@
 
                     <!-- Vehicle Grid -->
                     <div class="inventory-grid">
+                        <a href="{{ route('detalis') }}">
                         <!-- Vehicle Card 1 -->
                         <div class="inventory-card">
                             <div class="card-header">
@@ -143,6 +144,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
 
                         <!-- Vehicle Card 2 -->
                         <div class="inventory-card">
