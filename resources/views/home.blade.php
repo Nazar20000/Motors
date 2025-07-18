@@ -80,7 +80,7 @@
             <div class="vehicles-grid">
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <img src="./img/banner.jpg" alt="2013 Ford C-Max">
+                        <img src="./resurs/car1.jpeg" alt="2013 Ford C-Max">
                         <div class="vehicle-badges">
                             <span class="badge plug-in">PLUG IN</span>
                         </div>
@@ -99,7 +99,7 @@
 
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <img src="./img/banner.jpg" alt="2016 Tesla Model X">
+                        <img src="./resurs/car2.jpeg" alt="2016 Tesla Model X">
                         <div class="vehicle-badges">
                             <span class="badge electric">ELECTRIC</span>
                         </div>
@@ -118,7 +118,45 @@
 
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <img src="./img/banner.jpg" alt="2018 Lexus LC">
+                        <img src="./resurs/car3.jpeg" alt="2018 Lexus LC">
+                        <div class="vehicle-badges">
+                            <span class="badge lexus">LEXUS LC500</span>
+                        </div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h3>2018 LEXUS LC</h3>
+                        <p class="price">$64,999</p>
+                        <div class="vehicle-details">
+                            <span><span class="material-symbols-outlined">settings</span> AUTOMATIC</span>
+                            <span><span class="material-symbols-outlined">local_gas_station</span> GASOLINE</span>
+                            <span><span class="material-symbols-outlined">speed</span> 23,789</span>
+                        </div>
+                        <button class="apply-btn">APPLY ONLINE</button>
+                    </div>
+                </div>
+
+                                <div class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="./resurs/car3.jpeg" alt="2018 Lexus LC">
+                        <div class="vehicle-badges">
+                            <span class="badge lexus">LEXUS LC500</span>
+                        </div>
+                    </div>
+                    <div class="vehicle-info">
+                        <h3>2018 LEXUS LC</h3>
+                        <p class="price">$64,999</p>
+                        <div class="vehicle-details">
+                            <span><span class="material-symbols-outlined">settings</span> AUTOMATIC</span>
+                            <span><span class="material-symbols-outlined">local_gas_station</span> GASOLINE</span>
+                            <span><span class="material-symbols-outlined">speed</span> 23,789</span>
+                        </div>
+                        <button class="apply-btn">APPLY ONLINE</button>
+                    </div>
+                </div>
+
+                                <div class="vehicle-card">
+                    <div class="vehicle-image">
+                        <img src="./resurs/car3.jpeg" alt="2018 Lexus LC">
                         <div class="vehicle-badges">
                             <span class="badge lexus">LEXUS LC500</span>
                         </div>
@@ -137,7 +175,7 @@
 
                 <div class="vehicle-card">
                     <div class="vehicle-image">
-                        <img src="./img/banner.jpg" alt="2023 Kia EV6">
+                        <img src="./resurs/car4.jpeg" alt="2023 Kia EV6">
                         <div class="vehicle-badges">
                             <span class="badge ev">EV6 WIND</span>
                         </div>
@@ -164,47 +202,47 @@
                 <button class="slider-btn prev" id="prevBtn">
                     <span class="material-symbols-outlined">chevron_left</span>
                 </button>
-                <div class="makes-slider-wrapper">
+                <div class="makes-slider-wrapper">  
                     <div class="makes-slider" id="makesSlider">
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Honda">
+                            <img src="./resurs/honda.jpeg" alt="Honda">
                             <span>HONDA</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Hyundai">
+                            <img src="./resurs/HYUNDAY.jpeg" alt="Hyundai">
                             <span>HYUNDAI</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Kia">
+                            <img src="./resurs/KIA.jpeg" alt="Kia">
                             <span>KIA</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Land Rover">
+                            <img src="./resurs/LAND.jpeg" alt="Land Rover">
                             <span>LAND ROVER</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="BMW">
+                            <img src="./resurs/BMW.jpeg" alt="BMW">
                             <span>BMW</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Mercedes">
+                            <img src="./resurs/MERCEDES.jpeg" alt="Mercedes">
                             <span>MERCEDES</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Audi">
+                            <img src="./resurs/AUDI.jpeg" alt="Audi">
                             <span>AUDI</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Tesla">
+                            <img src="./resurs/TESLA.png" alt="Tesla">
                             <span>TESLA</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Audi">
-                            <span>AUDI</span>
+                            <img src="./resurs/KTA.png" alt="Audi">
+                            <span>KTA</span>
                         </div>
                         <div class="make-item">
-                            <img src="./img/banner.jpg" alt="Tesla">
-                            <span>TESLA</span>
+                            <img src="./resurs/PORSHE.jpeg" alt="PORSHE">
+                            <span>PORSHE</span>
                         </div>
                     </div>
                 </div>
@@ -234,7 +272,7 @@
                         to contact us. We’re here to help you every step of the way.</p>
                 </div>
                 <div class="welcome-image">
-                    <img src="./img/person.png" alt="Bucket Buddy Auto Building">
+                    <img src="./resurs/car2.jpeg" alt="Bucket Buddy Auto Building">
                 </div>
             </div>
         </div>

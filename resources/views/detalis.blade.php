@@ -19,7 +19,7 @@
                 <!-- Vehicle Images -->
                 <div class="vehicle-images">
                     <div class="main-image">
-                        <img src="./img/banner.jpg" alt="Tesla Model 3" id="mainImage">
+                        <img src="./resurs/porshe_car.jpeg" alt="Tesla Model 2" id="mainImage">
                         <div class="image-controls">
                             <button class="image-control prev">
                                 <span class="material-symbols-outlined">chevron_left</span>
@@ -36,13 +36,13 @@
 
                     <div class="thumbnail-gallery">
                         <div class="thumbnail active">
-                            <img src="./img/banner.jpg" alt="Tesla Model 3">
+                            <img src="./resurs/porshe_car.jpeg" alt="Tesla Model 3">
                         </div>
                         <div class="thumbnail">
-                            <img src="./img/banner.jpg" alt="Tesla Model 3">
+                            <img src="./resurs/martin.jpeg" alt="Tesla Model 3">
                         </div>
                         <div class="thumbnail">
-                            <img src="./img/banner.jpg" alt="Tesla Model 3">
+                            <img src="./resurs/porsh.jpeg" alt="Tesla Model 3">
                         </div>
                         <div class="thumbnail">
                             <img src="./img/banner.jpg" alt="Tesla Model 3">

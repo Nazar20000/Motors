@@ -97,7 +97,7 @@
                             </div>
                             
                             <div class="vehicle-image">
-                                <img src="./img/banner.jpg" alt="2023 Porsche 718 Cayman">
+                                <img src="./resurs/porshe_car.jpeg" alt="2023 Porsche 718 Cayman">
                             </div>
                             
                             <div class="vehicle-details">
@@ -159,7 +159,7 @@
                             </div>
                             
                             <div class="vehicle-image">
-                                <img src="./img/banner.jpg" alt="2020 Aston Martin Vantage">
+                                <img src="./resurs/martin.jpeg" alt="2020 Aston Martin Vantage">
                             </div>
                             
                             <div class="vehicle-details">
@@ -225,7 +225,7 @@
                             </div>
                             
                             <div class="vehicle-image">
-                                <img src="./img/banner.jpg" alt="2021 Porsche 718 Cayman">
+                                <img src="./resurs/porsh.jpeg" alt="2021 Porsche 718 Cayman">
                             </div>
                             
                             <div class="vehicle-details">
