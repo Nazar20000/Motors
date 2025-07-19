@@ -8,10 +8,10 @@
         <nav class="nav">
             <a href="{{ route('home') }}" class="nav-link active">Home</a>
             <a href="{{ route('inventory') }}" class="nav-link">Inventory</a>
-            <a href="#" class="nav-link">Car Finder</a>
-            <a href="#" class="nav-link">Apply Online</a>
-            <a href="#" class="nav-link">About Us</a>
-            <a href="#" class="nav-link">Contact Us</a>
+            <a href="{{ route('car_finder') }}" class="nav-link">Car Finder</a>
+            <a href="{{ route('apply_online') }}" class="nav-link">Apply Online</a>
+            <a href="{{ route('about_us') }}" class="nav-link">About Us</a>
+            <a href="{{ route('contact_us') }}" class="nav-link">Contact Us</a>
             <span class="material-symbols-outlined search-icon">search</span>
         </nav>
         <button class="mobile-menu-btn">
