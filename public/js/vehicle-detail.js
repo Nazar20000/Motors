@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentImageIndex = 0;
     const images = [
-        './resurs/porshe_car.jpeg',
-        './resurs/martin.jpeg',
-        './resurs/porsh.jpeg',
-        './resurs/martin.jpeg',
-        './resurs/martin.jpeg'
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg',
+        './img/banner.jpg'
     ];
 
     // Thumbnail click functionality

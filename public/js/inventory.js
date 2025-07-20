@@ -327,6 +327,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.transform = '';
             }, 150);
             
+            // Navigate to vehicle detail page
+            setTimeout(() => {
+                window.location.href = 'vehicle-detail.html';
+            }, 200);
         });
         
         // Add hover effect for better UX

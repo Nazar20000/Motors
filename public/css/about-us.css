@@ -1,4 +1,3 @@
-/* About Us Page Specific Styles */
 .about-us-page {
     margin-top: 70px;
     background-color: #1a1a1a;
@@ -115,7 +114,6 @@
     font-size: 16px;
     margin: 0;
 }
-
 
 .hours-info p {
     color: #cccccc;
