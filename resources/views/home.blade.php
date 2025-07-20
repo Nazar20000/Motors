@@ -19,11 +19,38 @@
             <div class="search-form">
                 <select class="search-select">
                     <option>Any Year</option>
-                    <option>2024</option>
-                    <option>2023</option>
-                    <option>2022</option>
-                    <option>2021</option>
-                    <option>2020</option>
+                        <option>2030</option>
+                        <option>2029</option>
+                        <option>2028</option>
+                        <option>2027</option>
+                        <option>2026</option>
+                        <option>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                        <option>2012</option>
+                        <option>2011</option>
+                        <option>2010</option>
+                        <option>2009</option>
+                        <option>2008</option>
+                        <option>2007</option>
+                        <option>2006</option>
+                        <option>2005</option>
+                        <option>2004</option>
+                        <option>2003</option>
+                        <option>2002</option>
+                        <option>2001</option>
+                        <option>2000</option>
+                        <option>1999</option>
                 </select>
                 <select class="search-select">
                     <option>Any Make</option>
@@ -32,6 +59,51 @@
                     <option>Mercedes</option>
                     <option>Audi</option>
                     <option>Porsche</option>
+                    <option>Acura</option>
+                    <option>Alfa Romeo</option>
+                    <option>Aston Martin</option>
+                    <option>Bentley</option>
+                    <option>Bugatti</option>
+                    <option>Buick</option>
+                    <option>Cadillac</option>
+                    <option>Chevrolet (Chevy)</option>
+                    <option>Chrysler</option>
+                    <option>Dodge</option>
+                    <option>Ferrari</option>
+                    <option>Fiat</option>
+                    <option>Ford</option>
+                    <option>Genesis</option>
+                    <option>GMC</option>
+                    <option>Honda</option>
+                    <option>Hummer</option>
+                    <option>Hyundai</option>
+                    <option>Infiniti</option>
+                    <option>Jaguar</option>
+                    <option>Jeep</option>
+                    <option>Kia</option>
+                    <option>Koenigsegg</option>
+                    <option>Land Rover</option>
+                    <option>Lexus</option>
+                    <option>Lincoln</option>
+                    <option>Lotus</option>
+                    <option>Lucra</option>
+                    <option>Lucid Motors</option>
+                    <option>Maserati</option>
+                    <option>Mazda</option>
+                    <option>McLaren</option>
+                    <option>Mercedes-Benz</option>
+                    <option>Mini</option>
+                    <option>Mitsubishi</option>
+                    <option>Nissan</option>
+                    <option>Pagani</option>
+                    <option>Polestar</option>
+                    <option>Ram</option>
+                    <option>Rivian</option>
+                    <option>Rolls-Royce</option>
+                    <option>Subaru</option>
+                    <option>Toyota</option>
+                    <option>Volkswagen</option>
+                    <option>Volvo</option>
                 </select>
                 <select class="search-select">
                     <option>Any Model</option>
@@ -279,7 +351,7 @@
     </section>
     
 @push('scripts')
-    <script src="./js/script.js"></script>
+    <script src="/js/script.js"></script>
 @endpush
     
 @endsection

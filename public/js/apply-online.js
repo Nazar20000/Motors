@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
         });
     });
-    
-    // Phone number formatting
+
     const phoneInputs = form.querySelectorAll('input[type="tel"]');
     phoneInputs.forEach(input => {
         input.addEventListener('input', function() {
@@ -27,8 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.value = value;
         });
     });
-    
-    // SSN formatting
+
     const ssnInput = document.getElementById('ssn');
     ssnInput.addEventListener('input', function() {
         let value = this.value.replace(/\D/g, '');

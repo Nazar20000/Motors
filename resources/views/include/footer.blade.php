@@ -4,16 +4,16 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>STORE HOURS</h3>
-                <p><strong>Mon - Sat :</strong> 10:00 AM - 7:00 PM</p>
-                <p><strong>Sun :</strong> 11:00 AM - 4:00 PM</p>
+                <p><strong>Monday - Saturday :</strong> 9:00 AM - 7:00 PM</p>
+                <p><strong>Sunday :</strong> Close</p>
             </div>
             <div class="footer-section">
                 <h3>LOCATION</h3>
                 <div class="location">
                     <span class="material-symbols-outlined">location_on</span>
                     <div>
-                        <p>2400 Fulton Ave, Unit L,</p>
-                        <p>Sacramento, CA 95825</p>
+                        <p>917 Sw 29th st</p>
+                        <p>OKC, OK, 73109</p>
                     </div>
                 </div>
             </div>
@@ -28,8 +28,8 @@
             </div>
             <div class="footer-section">
                 <h3>GET YOUR CAR NOW!</h3>
-                <p><span class="material-symbols-outlined">phone</span> <strong>SALES:</strong> (279) 206-4797</p>
-                <p><span class="material-symbols-outlined">email</span> <strong>SALES:</strong> danijela13@gmail.com</p>
+                <p><span class="material-symbols-outlined">phone</span> <strong>SALES:</strong> (405) 210-6854</p>
+                <p><span class="material-symbols-outlined">email</span> <strong>SALES:</strong> d.nbmotorsv@gmail.com</p>
             </div>
         </div>
     </div>
