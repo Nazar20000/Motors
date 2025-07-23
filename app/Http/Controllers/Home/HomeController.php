@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class HomeController extends Controller
 {
@@ -13,8 +14,8 @@ class HomeController extends Controller
     }
     
     public function inventory(){
-
-        return view('inventory');
+        $cars = Car::where('published', true)->get();
+        return view('inventory', compact('cars'));
     }
 
     public function detalis(){
@@ -40,5 +41,14 @@ class HomeController extends Controller
     public function contact_us(){
 
         return view('contact_us');
+    }
+
+    public function admin(){
+        return view('admin.admin');
+    }
+
+    public function carDetails($id) {
+        $car = Car::with('images')->where('published', true)->findOrFail($id);
+        return view('detalis', compact('car'));
     }
 }

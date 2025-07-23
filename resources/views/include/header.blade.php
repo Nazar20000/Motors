@@ -12,7 +12,7 @@
             <a href="{{ route('apply_online') }}" class="nav-link">Apply Online</a>
             <a href="{{ route('about_us') }}" class="nav-link">About Us</a>
             <a href="{{ route('contact_us') }}" class="nav-link">Contact Us</a>
-            <span class="material-symbols-outlined search-icon">search</span>
+            <span  class="material-symbols-outlined search-icon"><a href="{{ route('admin') }}">search</a></span>
         </nav>
         <button class="mobile-menu-btn">
             <span class="material-symbols-outlined">menu</span>

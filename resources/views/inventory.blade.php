@@ -83,198 +83,34 @@
 
                     <!-- Vehicle Grid -->
                     <div class="inventory-grid">
-                        <a href="{{ route('detalis') }}">
-                        <!-- Vehicle Card 1 -->
-                        <div class="inventory-card">
-                            <div class="card-header">
-                                <label class="compare-checkbox">
-                                    <input type="checkbox"> Compare
-                                </label>
-                                <div class="card-actions">
-                                    <span class="material-symbols-outlined favorite">favorite_border</span>
-                                    <button class="apply-online-btn">APPLY ONLINE</button>
-                                </div>
-                            </div>
-                            
-                            <div class="vehicle-image">
-                                <img src="./resurs/porshe_car.jpeg" alt="2023 Porsche 718 Cayman">
-                            </div>
-                            
-                            <div class="vehicle-details">
-                                <h3>2023 PORSCHE 718 CAYMAN</h3>
-                                <div class="price-tag">$139,999</div>
-                                
-                                <div class="specs">
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">confirmation_number</span>
-                                        <span>WP0AB2A83PK260411</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">speed</span>
-                                        <span>5,678</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>AUTOMATIC</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>RWD</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">local_gas_station</span>
-                                        <span>GASOLINE</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">door_front</span>
-                                        <span>2</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">event_seat</span>
-                                        <span>2468</span>
+                        @foreach($cars as $car)
+                        <a href="{{ route('inventory.details', $car->id) }}">
+                            <div class="inventory-card">
+                                <div class="card-header">
+                                    <label class="compare-checkbox">
+                                        <input type="checkbox"> Compare
+                                    </label>
+                                    <div class="card-actions">
+                                        <span class="material-symbols-outlined favorite">favorite_border</span>
+                                        <button class="apply-online-btn">APPLY ONLINE</button>
                                     </div>
                                 </div>
-                                
-                                <div class="carfax-section">
-                                    <div class="carfax-badge">
-                                        <span>SHOW ME THE</span>
-                                        <strong>CARFAX</strong>
-                                        <span class="carfax-value">GREAT VALUE</span>
+                                <div class="vehicle-image">
+                                    <img src="{{ $car->image ? asset('storage/' . $car->image) : '/img/banner.jpg' }}" alt="{{ $car->brand }} {{ $car->model }}">
+                                </div>
+                                <div class="vehicle-details">
+                                    <h3>{{ $car->year }} {{ strtoupper($car->brand) }} {{ strtoupper($car->model) }}</h3>
+                                    <div class="price-tag">${{ number_format($car->price, 0, '', ',') }}</div>
+                                    <div class="specs">
+                                        <div class="spec-item">
+                                            <span class="material-symbols-outlined">confirmation_number</span>
+                                            <span>ID: {{ $car->id }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </a>
-
-                        <!-- Vehicle Card 2 -->
-                        <div class="inventory-card">
-                            <div class="card-header">
-                                <label class="compare-checkbox">
-                                    <input type="checkbox"> Compare
-                                </label>
-                                <div class="card-actions">
-                                    <span class="material-symbols-outlined favorite">favorite_border</span>
-                                    <button class="apply-online-btn">APPLY ONLINE</button>
-                                </div>
-                            </div>
-                            
-                            <div class="vehicle-image">
-                                <img src="./resurs/martin.jpeg" alt="2020 Aston Martin Vantage">
-                            </div>
-                            
-                            <div class="vehicle-details">
-                                <h3>2020 ASTON MARTIN VANTAGE</h3>
-                                <div class="price-tag">$84,999</div>
-                                
-                                <div class="specs">
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">confirmation_number</span>
-                                        <span>SCFSMGAW3LGL03320</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">speed</span>
-                                        <span>22,346</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>AUTOMATIC</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>RWD</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">local_gas_station</span>
-                                        <span>GASOLINE</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">door_front</span>
-                                        <span>2</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">event_seat</span>
-                                        <span>2390</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="carfax-section">
-                                    <div class="carfax-badge">
-                                        <span>SHOW ME THE</span>
-                                        <strong>CARFAX</strong>
-                                        <span class="carfax-value good">GOOD VALUE</span>
-                                    </div>
-                                    <div class="cargurus-badge">
-                                        <span class="material-symbols-outlined">check_circle</span>
-                                        <span>GOOD DEAL</span>
-                                        <span class="cargurus-text">CarGurus</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Vehicle Card 3 -->
-                        <div class="inventory-card">
-                            <div class="card-header">
-                                <label class="compare-checkbox">
-                                    <input type="checkbox"> Compare
-                                </label>
-                                <div class="card-actions">
-                                    <span class="material-symbols-outlined favorite">favorite_border</span>
-                                    <button class="apply-online-btn">APPLY ONLINE</button>
-                                </div>
-                            </div>
-                            
-                            <div class="vehicle-image">
-                                <img src="./resurs/porsh.jpeg" alt="2021 Porsche 718 Cayman">
-                            </div>
-                            
-                            <div class="vehicle-details">
-                                <h3>2021 PORSCHE 718 CAYMAN</h3>
-                                <div class="price-tag">$76,999</div>
-                                
-                                <div class="specs">
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">confirmation_number</span>
-                                        <span>WP0AA2A84MK289902</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">speed</span>
-                                        <span>3,015</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>AUTOMATIC</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">settings</span>
-                                        <span>RWD</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">local_gas_station</span>
-                                        <span>GASOLINE</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">door_front</span>
-                                        <span>2</span>
-                                    </div>
-                                    <div class="spec-item">
-                                        <span class="material-symbols-outlined">event_seat</span>
-                                        <span>1002</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="carfax-section">
-                                    <div class="carfax-badge">
-                                        <span>SHOW ME THE</span>
-                                        <strong>CARFAX</strong>
-                                        <span class="carfax-value">GREAT VALUE</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional vehicle cards would go here -->
-                        
+                        @endforeach
                     </div>
 
                     <!-- Pagination -->
@@ -344,8 +180,7 @@
     </section>
 
 @push('scripts')
-    <script src="./js/script.js"></script>
-    <script src="./js/inventory.js"></script>
+
 @endpush
 
 @endsection
