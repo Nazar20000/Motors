@@ -5,8 +5,8 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/inventory.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/inventory.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
@@ -88,23 +88,32 @@
                             <div class="inventory-card">
                                 <div class="card-header">
                                     <label class="compare-checkbox">
-                                        <input type="checkbox"> Compare
+                                        <input type="checkbox"> <span>Compare</span>
                                     </label>
-                                    <div class="card-actions">
-                                        <span class="material-symbols-outlined favorite">favorite_border</span>
-                                        <button class="apply-online-btn">APPLY ONLINE</button>
-                                    </div>
+                                    <span class="material-symbols-outlined favorite">favorite_border</span>
+                                    <button class="apply-online-btn">APPLY ONLINE</button>
                                 </div>
                                 <div class="vehicle-image">
                                     <img src="{{ $car->image ? asset('storage/' . $car->image) : '/img/banner.jpg' }}" alt="{{ $car->brand }} {{ $car->model }}">
                                 </div>
                                 <div class="vehicle-details">
-                                    <h3>{{ $car->year }} {{ strtoupper($car->brand) }} {{ strtoupper($car->model) }}</h3>
+                                    <div class="vehicle-title-row">
+                                        <span class="vehicle-title">{{ strtoupper($car->brand) }} {{ strtoupper($car->model) }}</span>
+                                        <span class="vehicle-year-badge">{{ $car->year }}</span>
+                                    </div>
                                     <div class="price-tag">${{ number_format($car->price, 0, '', ',') }}</div>
-                                    <div class="specs">
-                                        <div class="spec-item">
-                                            <span class="material-symbols-outlined">confirmation_number</span>
-                                            <span>ID: {{ $car->id }}</span>
+                                    <div class="specs specs-grid">
+                                        <div class="spec-item"><span class="material-symbols-outlined">confirmation_number</span> <span>{{ $car->id }}</span></div>
+                                        <div class="spec-item"><span class="material-symbols-outlined">speed</span> <span>22,346</span></div>
+                                        <div class="spec-item"><span class="material-symbols-outlined">settings</span> <span>AT</span></div>
+                                        <div class="spec-item"><span class="material-symbols-outlined">settings</span> <span>AWD</span></div>
+                                        <div class="spec-item"><span class="material-symbols-outlined">local_gas_station</span> <span>GAS</span></div>
+                                        <div class="spec-item"><span class="material-symbols-outlined">door_front</span> <span>2</span></div>
+                                    </div>
+                                    <div class="carfax-section">
+                                        <div class="carfax-badge">
+                                            <strong>CARFAX</strong>
+                                            <span class="carfax-value">GREAT VALUE</span>
                                         </div>
                                     </div>
                                 </div>

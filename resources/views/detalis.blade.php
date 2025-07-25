@@ -5,9 +5,9 @@
 @endsection
 
 @push('styles')
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/vehicle-detail.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./css/vehicle-detail.css">
-    <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
 
@@ -16,9 +16,7 @@
     <div class="container">
         <div class="car-details-layout">
             <div class="car-main-photo">
-                @if($car->image)
-                    <img src="{{ asset('storage/' . $car->image) }}" alt="Главное фото" style="max-width:400px; border-radius:10px;">
-                @endif
+                <img id="mainCarImage" src="{{ $car->image ? asset('storage/' . $car->image) : '' }}" alt="Главное фото">
             </div>
             <div class="car-info">
                 <h1>{{ $car->year }} {{ $car->brand }} {{ $car->model }}</h1>
@@ -28,20 +26,28 @@
         </div>
         <div class="car-gallery">
             <h3>Фотографии автомобиля</h3>
-            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <div id="car-thumbs" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
                 @if($car->image)
-                    <img src="{{ asset('storage/' . $car->image) }}" alt="Главное фото" width="120">
+                    <img class="car-thumb active-thumb" src="{{ asset('storage/' . $car->image) }}" alt="Главное фото" data-full="{{ asset('storage/' . $car->image) }}">
                 @endif
                 @foreach($car->images as $img)
-                    <img src="{{ asset('storage/' . $img->image_path) }}" alt="Фото" width="120">
+                    <img class="car-thumb" src="{{ asset('storage/' . $img->image_path) }}" alt="Фото" data-full="{{ asset('storage/' . $img->image_path) }}">
                 @endforeach
             </div>
         </div>
     </div>
 </main>
-@endsection
-
 @push('scripts')
-    <script src="./js/script.js"></script>
-    <script src="./js/vehicle-detail.js"></script>
+<script>
+    const mainImg = document.getElementById('mainCarImage');
+    const thumbs = document.querySelectorAll('.car-thumb');
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+            mainImg.src = this.dataset.full;
+            thumbs.forEach(t => t.classList.remove('active-thumb'));
+            this.classList.add('active-thumb');
+        });
+    });
+</script>
 @endpush
+@endsection
