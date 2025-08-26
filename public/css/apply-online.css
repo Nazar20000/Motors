@@ -1,8 +1,9 @@
-/* Apply Online Page Specific Styles */
+/* Специфичные стили страницы "Подать заявку онлайн" */
 .apply-online-page {
-    margin-top: 70px;
+    margin-top: 80px;
     background-color: #1a1a1a;
     min-height: 100vh;
+    color: #000000;
 }
 
 .page-banner {
@@ -93,6 +94,19 @@
     gap: 20px;
 }
 
+/* Place grid-level action buttons to the far right column */
+.grid-action-right {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Force specific fields to the right column */
+.grid-col-right {
+    grid-column: 2 / 3;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -155,6 +169,18 @@
 .add-previous-employment,
 .add-trade-in {
     margin-top: 20px;
+}
+
+/* Align add buttons to the right on wide screens */
+.add-previous-address,
+.add-previous-employment {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-address-btn,
+.add-employment-btn {
+    margin-left: auto;
 }
 
 .add-address-btn,
@@ -383,6 +409,13 @@
         grid-template-columns: 1fr;
         gap: 15px;
     }
+    .grid-action-right {
+        grid-column: 1;
+        justify-content: flex-start;
+    }
+    .grid-col-right {
+        grid-column: 1;
+    }
     
     .form-group.full-width {
         grid-column: 1;
@@ -407,6 +440,11 @@
     .submit-btn {
         padding: 12px 30px;
         font-size: 14px;
+    }
+    /* On mobile place buttons on the left for readability */
+    .add-previous-address,
+    .add-previous-employment {
+        justify-content: flex-start;
     }
 }
 
@@ -465,3 +503,146 @@
         box-shadow: none;
     }
 }
+
+/* Vehicle Information Section Styles */
+.vehicle-info-section {
+    background-color: #ffffff;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Notification + validation styles moved from JS */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.field-error {
+    border-color: #dc3545 !important;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vehicle-info-section h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ffff00;
+    text-align: center;
+}
+
+.vehicle-info-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.vehicle-image {
+    text-align: center;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ffff00;
+}
+
+.vehicle-details h3 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.vehicle-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.vehicle-specs p {
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.vehicle-specs strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Make readonly fields look different */
+.form-group input[readonly] {
+    background-color: #f8f8f8;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Responsive design for vehicle info */
+@media (max-width: 768px) {
+    .vehicle-info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .vehicle-image img {
+        height: 180px;
+    }
+    
+    .vehicle-specs {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Date inputs - moved from inline styles */
+input.us-date {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input.us-date:focus {
+    outline: none;
+    border-color: #ffff00;
+    box-shadow: 0 0 0 2px rgba(255, 255, 0, 0.2);
+}
+
+/* Force English date format display */
+input.us-date::before {
+    content: attr(placeholder);
+    color: #999;
+    margin-right: 0.5em;
+}
+
+input.us-date:focus::before,
+input.us-date:valid::before {
+    display: none;
+}
+
+/* Date input placeholder styling */
+/* (Using text input; additional UA pseudo-elements not needed) */

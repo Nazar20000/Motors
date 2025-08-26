@@ -1,0 +1,76 @@
+/* Styles for admin panel statistics page */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #ffffff;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 255, 0, 0.1);
+    border-color: #ffff00;
+}
+
+.stat-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffff00;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #cccccc;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Additional styles for statistics */
+.stats-header {
+    margin-bottom: 30px;
+}
+
+.stats-header h1 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.stats-summary {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #444;
+}
+
+.stats-summary p {
+    color: #cccccc;
+    margin: 0;
+}
+
+/* Responsiveness for mobile devices */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+    }
+} 

@@ -1,35 +1,46 @@
-@extends('layout.app')
+@extends('layout.admin')
 
 @section('title-block')
-    Админ панель
+    Admin Panel
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/admin.css">
 @endpush
 
 @section('content')
 <div class="admin-container">
+    <!-- Admin Top Bar -->
+    <div class="admin-top-bar">
+        <h1>Administrator Panel</h1>
+        <div class="admin-actions">
+            <a href="{{ route('home') }}" class="back-to-site">
+                <span class="material-symbols-outlined">home</span>
+                Back to Site
+            </a>
+        </div>
+    </div>
+    
     <nav class="admin-sidebar">
         <ul>
-            <li><a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users') ? 'active' : '' }}">Пользователи</a></li>
-            <li><a href="{{ route('admin.cars') }}" class="{{ request()->routeIs('admin.cars') ? 'active' : '' }}">Автомобили</a></li>
-            <li><a href="{{ route('admin.requests') }}" class="{{ request()->routeIs('admin.requests') ? 'active' : '' }}">Заявки</a></li>
-            <li><a href="{{ route('admin.stats') }}" class="{{ request()->routeIs('admin.stats') ? 'active' : '' }}">Статистика</a></li>
-            <li><a href="{{ route('admin.settings') }}" class="{{ request()->routeIs('admin.settings') ? 'active' : '' }}">Настройки</a></li>
+            <li><a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users') ? 'active' : '' }}">Users</a></li>
+            <li><a href="{{ route('admin.cars') }}" class="{{ request()->routeIs('admin.cars') ? 'active' : '' }}">Cars</a></li>
+            <li><a href="{{ route('admin.brands.index') }}" class="{{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">Brands</a></li>
+            <li><a href="{{ route('admin.car-models.index') }}" class="{{ request()->routeIs('admin.car-models.*') ? 'active' : '' }}">Models</a></li>
+            <li><a href="{{ route('admin.body-types.index') }}" class="{{ request()->routeIs('admin.body-types.*') ? 'active' : '' }}">Body Types</a></li>
+            <li><a href="{{ route('admin.requests') }}" class="{{ request()->routeIs('admin.requests') ? 'active' : '' }}">Requests</a></li>
+            <li><a href="{{ route('admin.applications') }}" class="{{ request()->routeIs('admin.applications*') ? 'active' : '' }}">Applications</a></li>
+            <li><a href="{{ route('admin.stats') }}" class="{{ request()->routeIs('admin.stats') ? 'active' : '' }}">Statistics</a></li>
+            <li><a href="{{ route('admin.settings') }}" class="{{ request()->routeIs('admin.settings') ? 'active' : '' }}">Settings</a></li>
         </ul>
     </nav>
+    
     <section class="admin-content">
-        <h1>Панель Администратора</h1>
-        <p>Добро пожаловать в административную панель. Выберите раздел в меню слева.</p>
-        <!-- Здесь будет динамический контент выбранного раздела -->
+        <h2>Welcome to the administrative panel</h2>
+        <p>Select a section from the menu on the left to manage your website content.</p>
+        <!-- Dynamic content of the selected section will be here -->
     </section>
 </div>
 @endsection
 
 @push('scripts')
-    <script src="/js/script.js"></script>
 @endpush

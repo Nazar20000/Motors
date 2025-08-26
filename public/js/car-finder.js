@@ -1,11 +1,11 @@
-// Car Finder page functionality
+// Функциональность страницы поиска автомобилей
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('carFinderForm');
     const submitBtn = form.querySelector('.submit-btn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
     
-    // Character count functionality
+    // Функциональность подсчета символов
     const textareas = form.querySelectorAll('textarea');
     textareas.forEach(textarea => {
         const maxLength = 1024;
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Phone number formatting
+    // Форматирование номера телефона
     const phoneInput = document.getElementById('phone');
     phoneInput.addEventListener('input', function() {
         let value = this.value.replace(/\D/g, '');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.value = value;
     });
     
-    // Year input validation
+    // Валидация поля года
     const yearInput = document.getElementById('year');
     yearInput.addEventListener('input', function() {
         this.value = this.value.replace(/\D/g, '');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mileage input formatting
+    // Форматирование поля пробега
     const mileageInput = document.getElementById('maxMileage');
     mileageInput.addEventListener('input', function() {
         let value = this.value.replace(/\D/g, '');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.value = value;
     });
     
-    // Real-time validation
+    // Валидация в реальном времени
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
         field.addEventListener('blur', function() {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const existingError = formGroup.querySelector('.error-message');
         const existingSuccess = formGroup.querySelector('.success-message');
         
-        // Remove existing messages
+        // Удаляем существующие сообщения
         if (existingError) existingError.remove();
         if (existingSuccess) existingSuccess.remove();
         formGroup.classList.remove('error', 'success');
@@ -87,169 +87,312 @@ document.addEventListener('DOMContentLoaded', function() {
         let isValid = true;
         let errorMessage = '';
         
-        // Check if field is empty
+        // Проверяем, не пустое ли поле
         if (field.hasAttribute('required') && !field.value.trim()) {
             isValid = false;
-            errorMessage = 'This field is required';
+            errorMessage = 'Это поле обязательно для заполнения';
         }
         
-        // Email validation
+        // Валидация email
         if (field.type === 'email' && field.value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(field.value)) {
                 isValid = false;
-                errorMessage = 'Please enter a valid email address';
+                errorMessage = 'Пожалуйста, введите корректный email';
             }
         }
         
-        // Phone validation
-        if (field.type === 'tel' && field.value) {
-            const phoneRegex = /^$$\d{3}$$ \d{3}-\d{4}$/;
+        // Валидация телефона
+        if (field.id === 'phone' && field.value) {
+            const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
             if (!phoneRegex.test(field.value)) {
                 isValid = false;
-                errorMessage = 'Please enter a valid phone number';
+                errorMessage = 'Пожалуйста, введите корректный номер телефона';
             }
         }
         
-        // Year validation
+        // Валидация года
         if (field.id === 'year' && field.value) {
             const year = parseInt(field.value);
             const currentYear = new Date().getFullYear();
             if (year < 1900 || year > currentYear + 1) {
                 isValid = false;
-                errorMessage = `Please enter a year between 1900 and ${currentYear + 1}`;
+                errorMessage = `Год должен быть между 1900 и ${currentYear + 1}`;
             }
         }
         
-        // Display validation result
+        // Показываем результат валидации
         if (!isValid) {
             formGroup.classList.add('error');
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.innerHTML = `<span class="material-symbols-outlined">error</span>${errorMessage}`;
-            formGroup.appendChild(errorDiv);
-        } else if (field.value.trim()) {
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.textContent = errorMessage;
+            formGroup.appendChild(errorElement);
+        } else {
             formGroup.classList.add('success');
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.innerHTML = `<span class="material-symbols-outlined">check_circle</span>Valid`;
-            formGroup.appendChild(successDiv);
+            const successElement = document.createElement('div');
+            successElement.className = 'success-message';
+            successElement.textContent = '✓';
+            formGroup.appendChild(successElement);
         }
         
         return isValid;
     }
     
-    // Form submission
+    // Обработка отправки формы
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validate all required fields
+        // Валидируем все поля
         let isFormValid = true;
-        requiredFields.forEach(field => {
+        const allFields = form.querySelectorAll('input, select, textarea');
+        
+        allFields.forEach(field => {
             if (!validateField(field)) {
                 isFormValid = false;
             }
         });
         
-        // Check terms acceptance
-        const termsCheckbox = document.getElementById('acceptTerms');
-        if (!termsCheckbox.checked) {
-            isFormValid = false;
-            showNotification('Please accept the terms and conditions', 'error');
-        }
-        
         if (!isFormValid) {
-            showNotification('Please correct the errors in the form', 'error');
-            // Scroll to first error
-            const firstError = form.querySelector('.form-group.error');
-            if (firstError) {
-                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            showNotification('Please fix the errors in the form', 'error');
             return;
         }
         
-        // Show loading state
-        submitBtn.disabled = true;
+        // Показываем состояние загрузки
         btnText.style.display = 'none';
-        btnLoading.style.display = 'flex';
+        btnLoading.style.display = 'inline-block';
+        submitBtn.disabled = true;
         
-        // Simulate form submission
+        // Имитируем отправку формы
         setTimeout(() => {
-            // Reset button state
-            submitBtn.disabled = false;
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
+            // Сохраняем данные формы
+            saveFormData();
             
-            // Show success modal
+            // Показываем модальное окно успеха
             showSuccessModal();
             
-            // Reset form
-            form.reset();
-            
-            // Remove validation classes
-            const validatedGroups = form.querySelectorAll('.form-group.error, .form-group.success');
-            validatedGroups.forEach(group => {
-                group.classList.remove('error', 'success');
-                const messages = group.querySelectorAll('.error-message, .success-message');
-                messages.forEach(msg => msg.remove());
-            });
-            
-            // Reset character counts
-            textareas.forEach(textarea => {
-                const countElement = textarea.parentElement.querySelector('.character-count span');
-                if (countElement) {
-                    countElement.textContent = '0';
-                    countElement.parentElement.classList.remove('warning', 'error');
-                }
-            });
-            
+            // Сбрасываем состояние кнопки
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
         }, 2000);
     });
     
-    function showSuccessModal() {
-        const modal = document.createElement('div');
-        modal.className = 'success-modal';
-        modal.innerHTML = `
-            <div class="success-modal-content">
-                <div class="success-icon">
-                    <span class="material-symbols-outlined">check_circle</span>
-                </div>
-                <h2>Request Submitted Successfully!</h2>
-                <p>Thank you for your interest! Our team will review your request and contact you within 24 hours with available vehicles that match your criteria.</p>
-                <button onclick="this.closest('.success-modal').remove()">Close</button>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Show modal with animation
-        setTimeout(() => {
-            modal.classList.add('active');
-        }, 100);
-        
-        // Auto close after 5 seconds
-        setTimeout(() => {
-            if (modal.parentElement) {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.remove();
-                }, 300);
+    // Функциональность чекбоксов
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const formGroup = this.closest('.form-group');
+            if (this.checked) {
+                formGroup.classList.add('checked');
+            } else {
+                formGroup.classList.remove('checked');
             }
-        }, 5000);
-        
-        // Close on backdrop click
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.remove();
-                }, 300);
+        });
+    });
+    
+    // Функциональность селектов
+    const selects = form.querySelectorAll('select');
+    selects.forEach(select => {
+        select.addEventListener('change', function() {
+            if (this.value) {
+                this.classList.add('selected');
+            } else {
+                this.classList.remove('selected');
+            }
+        });
+    });
+    
+    // Функциональность очистки формы
+    const resetBtn = form.querySelector('.reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (confirm('Вы уверены, что хотите очистить форму?')) {
+                form.reset();
+                
+                // Удаляем все сообщения об ошибках и успехе
+                const errorMessages = form.querySelectorAll('.error-message, .success-message');
+                errorMessages.forEach(msg => msg.remove());
+                
+                // Удаляем классы состояния
+                const formGroups = form.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    group.classList.remove('error', 'success', 'checked', 'selected');
+                });
+                
+                // Сбрасываем счетчики символов
+                const countElements = form.querySelectorAll('.character-count span');
+                countElements.forEach(count => {
+                    count.textContent = '0';
+                    count.parentElement.classList.remove('warning', 'error');
+                });
+                
+                showNotification('Form cleared', 'success');
             }
         });
     }
     
+    // Функциональность автосохранения
+    let autoSaveTimeout;
+    const autoSaveFields = form.querySelectorAll('input, select, textarea');
+    autoSaveFields.forEach(field => {
+        field.addEventListener('input', function() {
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                saveFormData();
+                showNotification('Form automatically saved', 'info');
+            }, 2000);
+        });
+    });
+    
+    // Загружаем сохраненные данные при загрузке страницы
+    loadFormData();
+    
+    // Функция показа модального окна успеха
+    function showSuccessModal() {
+        const modal = document.createElement('div');
+        modal.className = 'success-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>✓ Заявка отправлена успешно!</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Спасибо за вашу заявку на поиск автомобиля. Мы свяжемся с вами в ближайшее время.</p>
+                    <div class="success-details">
+                        <h3>Что дальше?</h3>
+                        <ul>
+                            <li>Наши специалисты проанализируют ваши требования</li>
+                            <li>Мы найдем подходящие варианты в нашем инвентаре</li>
+                            <li>Свяжемся с вами для обсуждения деталей</li>
+                            <li>Организуем тест-драйв понравившихся автомобилей</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn primary" onclick="window.location.href='inventory.html'">
+                        Посмотреть инвентарь
+                    </button>
+                    <button class="modal-btn secondary" onclick="this.closest('.success-modal').remove()">
+                        Закрыть
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Добавляем стили модального окна
+        const styles = document.createElement('style');
+        styles.textContent = `
+            .success-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .modal-content {
+                background: #1a1a1a;
+                border-radius: 12px;
+                padding: 30px;
+                max-width: 500px;
+                width: 90%;
+                text-align: center;
+                animation: slideIn 0.3s ease;
+            }
+            
+            .modal-header h2 {
+                color: #4CAF50;
+                margin-bottom: 20px;
+            }
+            
+            .modal-body p {
+                color: #cccccc;
+                margin-bottom: 20px;
+            }
+            
+            .success-details {
+                text-align: left;
+                margin: 20px 0;
+            }
+            
+            .success-details h3 {
+                color: #ffff00;
+                margin-bottom: 10px;
+            }
+            
+            .success-details ul {
+                color: #cccccc;
+                padding-left: 20px;
+            }
+            
+            .success-details li {
+                margin-bottom: 5px;
+            }
+            
+            .modal-footer {
+                margin-top: 30px;
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            .modal-btn {
+                padding: 12px 24px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.3s ease;
+            }
+            
+            .modal-btn.primary {
+                background: #4CAF50;
+                color: white;
+            }
+            
+            .modal-btn.secondary {
+                background: #666;
+                color: white;
+            }
+            
+            .modal-btn:hover {
+                transform: translateY(-2px);
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideIn {
+                from { transform: translateY(-50px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(styles);
+        
+        document.body.appendChild(modal);
+        
+        // Закрытие по клику вне модального окна
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
+    }
+    
+    // Функция показа уведомлений
     function showNotification(message, type = 'info') {
-        // Remove existing notifications
+        // Удаляем существующие уведомления
         const existingNotifications = document.querySelectorAll('.notification');
         existingNotifications.forEach(notification => notification.remove());
         
@@ -264,83 +407,85 @@ document.addEventListener('DOMContentLoaded', function() {
             <span>${message}</span>
         `;
         
-        // Add notification styles
+        // Добавляем стили уведомления
         notification.style.cssText = `
             position: fixed;
-            top: 100px;
+            top: 20px;
             right: 20px;
             background: ${type === 'success' ? '#4CAF50' : 
                        type === 'warning' ? '#FF9800' : 
                        type === 'error' ? '#F44336' : '#2196F3'};
             color: white;
             padding: 15px 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
             z-index: 10000;
             animation: slideIn 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            max-width: 400px;
         `;
         
         document.body.appendChild(notification);
         
+        // Удаляем через 3 секунды
         setTimeout(() => {
             notification.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => {
-                notification.remove();
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
             }, 300);
-        }, 4000);
+        }, 3000);
     }
     
-    // Auto-save functionality (optional)
-    let autoSaveTimeout;
-    const formInputs = form.querySelectorAll('input, select, textarea');
-    
-    formInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            clearTimeout(autoSaveTimeout);
-            autoSaveTimeout = setTimeout(() => {
-                saveFormData();
-            }, 1000);
-        });
-    });
-    
+    // Функция сохранения данных формы
     function saveFormData() {
         const formData = new FormData(form);
         const data = {};
-        for (let [key, value] of formData.entries()) {
+        
+        for (const [key, value] of formData) {
             data[key] = value;
         }
+        
         localStorage.setItem('carFinderFormData', JSON.stringify(data));
     }
     
+    // Функция загрузки сохраненных данных
     function loadFormData() {
         const savedData = localStorage.getItem('carFinderFormData');
         if (savedData) {
             const data = JSON.parse(savedData);
+            
             Object.keys(data).forEach(key => {
                 const field = form.querySelector(`[name="${key}"]`);
-                if (field && data[key]) {
+                if (field) {
                     field.value = data[key];
+                    
+                    // Обновляем состояние полей
                     if (field.type === 'checkbox') {
                         field.checked = data[key] === 'on';
+                        if (field.checked) {
+                            field.closest('.form-group').classList.add('checked');
+                        }
+                    } else if (field.tagName === 'SELECT') {
+                        if (field.value) {
+                            field.classList.add('selected');
+                        }
                     }
+                }
+            });
+            
+            // Обновляем счетчики символов
+            const textareas = form.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                const countElement = textarea.parentElement.querySelector('.character-count span');
+                if (countElement) {
+                    countElement.textContent = textarea.value.length;
                 }
             });
         }
     }
     
-    // Load saved data on page load
-    loadFormData();
-    
-    // Clear saved data on successful submission
-    form.addEventListener('submit', function() {
-        setTimeout(() => {
-            localStorage.removeItem('carFinderFormData');
-        }, 2000);
-    });
-    
-    console.log('Car Finder page - All scripts loaded successfully');
+    console.log('Страница поиска автомобилей - все скрипты загружены успешно');
 });

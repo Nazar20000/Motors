@@ -1,20 +1,17 @@
 @extends('layout.app')
 
 @section('title-block')
-    Главная
+    Contact Us
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/contact-us.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/contact-us.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
 
-
 @section('content')
-
-
     <!-- Contact Us Page -->
     <main class="contact-us-page">
         <div class="page-banner">
@@ -22,6 +19,7 @@
         </div>
         
         <div class="container">
+            <!-- Hero Section with Contact Info and Car Image -->
             <section class="contact-hero">
                 <div class="contact-info-section">
                     <h2>HOW TO REACH US</h2>
@@ -34,37 +32,38 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <span class="material-symbols-outlined">email</span>
-                            <a href="mailto:danijela13@gmail.com" class="contact-link">danijela13@gmail.com</a>
+                            <a href="mailto:danijela13@gmail.com" class="contact-link">d.nbmotorsv@gmail.com</a>
                         </div>
                         <div class="contact-item">
                             <span class="material-symbols-outlined">phone</span>
-                            <a href="tel:+12792064797" class="contact-link">(279) 206-4797</a>
+                            <a href="tel:+12792064797" class="contact-link">(405) 210-6854</a>
                         </div>
                         <div class="contact-item">
                             <span class="material-symbols-outlined">location_on</span>
                             <div class="address-info">
-                                <span class="address-line">2400 Fulton Ave, Unit L,</span>
-                                <span class="address-line">Sacramento, CA 95825</span>
+                                <span class="address-line">917 Sw 29th st</span>
+                                <span class="address-line">OKC, OK, 73109</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="hours-info">
                         <div class="hours-item">
-                            <strong>Mon-Sat:</strong> 10:00 AM - 7:00 PM
+                            <strong>Monday - Saturday :</strong> 9:00 AM - 7:00 PM
                         </div>
                         <div class="hours-item">
-                            <strong>Sun:</strong> 11:00 AM - 4:00 PM
+                            <strong>Sunday:</strong>Close
                         </div>
                     </div>
                 </div>
                 
                 <div class="hero-image">
-                    <img src="./img/banner.jpg" alt="Yellow Lamborghini" />
+                    <img src="{{ asset('img/banner.jpg') }}" alt="Car" />
                     <div class="image-border"></div>
                 </div>
             </section>
             
+            <!-- Contact Form and Google Map Section -->
             <section class="contact-form-section">
                 <div class="form-container">
                     <div class="form-header">
@@ -73,7 +72,8 @@
                         <p class="required-note">All fields marked with an asterisk (*) are required</p>
                     </div>
                     
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="{{ route('contact.store') }}" method="POST">
+                        @csrf
                         <div class="form-section">
                             <h4>Contact Information</h4>
                             <div class="form-grid">
@@ -99,15 +99,15 @@
                                 <h5>Contact Preference</h5>
                                 <div class="preference-options">
                                     <div class="preference-option">
-                                        <input type="checkbox" id="prefPhone" name="contactPreference" value="phone">
+                                        <input type="checkbox" id="prefPhone" name="contactPreference[]" value="phone">
                                         <label for="prefPhone">Phone</label>
                                     </div>
                                     <div class="preference-option">
-                                        <input type="checkbox" id="prefEmail" name="contactPreference" value="email">
+                                        <input type="checkbox" id="prefEmail" name="contactPreference[]" value="email">
                                         <label for="prefEmail">Email</label>
                                     </div>
                                     <div class="preference-option">
-                                        <input type="checkbox" id="prefSMS" name="contactPreference" value="sms">
+                                        <input type="checkbox" id="prefSMS" name="contactPreference[]" value="sms">
                                         <label for="prefSMS">SMS</label>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                             
                             <div class="form-group full-width">
                                 <label for="message">Message *</label>
-                                <textarea id="message" name="message" rows="6" required placeholder="Please enter your message here..."></textarea>
+                                <textarea id="message" name="message" rows="6" required placeholder="Please enter your message here..." maxlength="1024"></textarea>
                                 <div class="character-count">
                                     <span id="messageCount">0</span>/1024
                                 </div>
@@ -151,21 +151,17 @@
                 </div>
                 
                 <div class="map-container">
-                    <div class="map-placeholder">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.5234567890123!2d-121.4944!3d38.5816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDM0JzUzLjgiTiAxMjHCsDI5JzM5LjgiVw!5e0!3m2!1sen!2sus!4v1234567890123"
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="BucketBuddy Auto LLC Location">
-                        </iframe>
+                                        <div class="map-placeholder">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center; padding: 20px;">
+                            <span class="material-symbols-outlined" style="font-size: 64px; margin-bottom: 15px;">location_on</span>
+                            <h3 style="margin: 0 0 10px 0; font-size: 24px;">D.N B Motors</h3>
+                            <p style="margin: 0 0 15px 0; font-size: 16px; opacity: 0.9;">917 SW 29th St<br>Oklahoma City, OK 73109</p>
+                            <a href="https://maps.app.goo.gl/YMBarfhzmmxMMc1q9?g_st=it" target="_blank" style="background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease;">View on Google Maps</a>
+                        </div>
                     </div>
                     <div class="map-info">
-                        <h4>BucketBuddy Auto LLC</h4>
-                        <p>2400 Fulton Ave Unit L, Sacramento, CA 95825, United States</p>
+                        <h4>D.N B Motors</h4>
+                        <p>917 SW 29th St, Oklahoma City, OK 73109, United States</p>
                         <div class="rating">
                             <span class="stars">★★★★☆</span>
                             <span class="rating-text">4.5 ★★★★★ 243 reviews</span>
@@ -178,8 +174,8 @@
     </main>
 
 @push('scripts')
-    <script src="./js/script.js"></script>
-    <script src="./js/contact-us.js"></script>
+
+    <script src="{{ asset('js/contact-us.js') }}"></script>
 @endpush
 
 @endsection

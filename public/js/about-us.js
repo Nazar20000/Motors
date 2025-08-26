@@ -1,6 +1,6 @@
-// About Us page functionality
+// Функциональность страницы "О нас"
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll reveal animation
+    // Плавная анимация появления при прокрутке
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
+    // Наблюдаем за элементами для анимации
     const animatedElements = document.querySelectorAll('.about-text, .about-image');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Enhanced image hover effects
+    // Улучшенные эффекты наведения для изображения
     const aboutImage = document.querySelector('.about-image');
     if (aboutImage) {
         aboutImage.addEventListener('mouseenter', function() {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Social links interaction
+    // Взаимодействие с социальными ссылками
     const socialLinks = document.querySelectorAll('.social-link');
     socialLinks.forEach(link => {
         link.addEventListener('mouseenter', function() {
@@ -47,15 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
         
-        // Add click analytics (placeholder)
+        // Добавляем аналитику кликов (заглушка)
         link.addEventListener('click', function(e) {
             const platform = this.getAttribute('aria-label');
-            console.log(`Social link clicked: ${platform}`);
-            // Here you would typically send analytics data
+            console.log(`Клик по социальной ссылке: ${platform}`);
+            // Здесь обычно отправляются данные аналитики
         });
     });
     
-    // Contact info click handlers
+    // Обработчики кликов для контактной информации
     const phoneLink = document.querySelector('.contact-info p:has(.material-symbols-outlined[textContent="phone"])');
     const emailLink = document.querySelector('.contact-info p:has(.material-symbols-outlined[textContent="email"])');
     
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Parallax effect for about image (subtle)
+    // Эффект параллакса для изображения "О нас" (тонкий)
     let ticking = false;
     
     function updateParallax() {
@@ -98,85 +98,173 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', requestTick);
     
-    // Text animation on scroll
-    const textElements = document.querySelectorAll('.about-description p');
-    const textObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateX(0)';
-                }, index * 200);
+    // Функциональность формы обратной связи
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Простая валидация
+            if (!name || !email || !message) {
+                showNotification('Please fill in all fields', 'error');
+                return;
             }
-        });
-    }, { threshold: 0.5 });
-    
-    textElements.forEach(p => {
-        p.style.opacity = '0';
-        p.style.transform = 'translateX(-20px)';
-        p.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        textObserver.observe(p);
-    });
-    
-    // Footer navigation active state
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const footerNavLinks = document.querySelectorAll('.footer-nav a');
-    
-    footerNavLinks.forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-            link.style.color = '#ffff00';
-            link.style.fontWeight = 'bold';
-        }
-    });
-    
-    // Lazy loading for images
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
+            
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email', 'error');
+                return;
             }
+            
+            // Показываем состояние загрузки
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            // Имитируем отправку формы
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Очищаем форму
+                this.reset();
+                
+                // Show success notification
+                showNotification('Message sent successfully!', 'success');
+            }, 2000);
         });
-    });
+    }
     
-    images.forEach(img => imageObserver.observe(img));
-    
-    // Error handling for images
-    const allImages = document.querySelectorAll('img');
-    allImages.forEach(img => {
-        img.addEventListener('error', function() {
-            this.src = '/placeholder.svg?height=400&width=600&text=Image+Not+Available';
-            this.alt = 'Image not available';
+    // Функциональность карты
+    const mapContainer = document.querySelector('.map-container');
+    if (mapContainer) {
+        // Инициализация интерактивной карты (заглушка)
+        mapContainer.addEventListener('click', function() {
+            showNotification('Opening map in new window...', 'info');
+            // Здесь можно открыть Google Maps или другую карту
         });
-    });
+    }
     
-    // Keyboard navigation enhancement
-    document.addEventListener('keydown', function(e) {
-        // ESC key functionality
-        if (e.key === 'Escape') {
-            // Close any open modals or overlays
-            const activeOverlays = document.querySelectorAll('.modal.active, .overlay.active');
-            activeOverlays.forEach(overlay => {
-                overlay.classList.remove('active');
-            });
-        }
+    // Функциональность статистики
+    const statsElements = document.querySelectorAll('.stat-number');
+    statsElements.forEach(stat => {
+        const targetNumber = parseInt(stat.getAttribute('data-target'));
+        const duration = 2000; // 2 секунды
+        const increment = targetNumber / (duration / 16); // 60 FPS
+        let currentNumber = 0;
         
-        // Tab navigation enhancement
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
-        }
+        const updateCounter = () => {
+            currentNumber += increment;
+            if (currentNumber < targetNumber) {
+                stat.textContent = Math.floor(currentNumber).toLocaleString();
+                requestAnimationFrame(updateCounter);
+            } else {
+                stat.textContent = targetNumber.toLocaleString();
+            }
+        };
+        
+        // Запускаем анимацию счетчика при появлении в поле зрения
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCounter();
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        });
+        
+        statObserver.observe(stat);
     });
     
-    // Remove keyboard navigation class on mouse use
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-navigation');
+    // Функциональность команды
+    const teamMembers = document.querySelectorAll('.team-member');
+    teamMembers.forEach(member => {
+        member.addEventListener('mouseenter', function() {
+            const info = this.querySelector('.member-info');
+            if (info) {
+                info.style.opacity = '1';
+            }
+        });
+        
+        member.addEventListener('mouseleave', function() {
+            const info = this.querySelector('.member-info');
+            if (info) {
+                info.style.opacity = '0';
+            }
+        });
     });
     
-    // Performance optimization - debounce scroll events
+    // Функциональность истории компании
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+        // Добавляем задержку для анимации появления
+        item.style.animationDelay = `${index * 0.2}s`;
+        
+        item.addEventListener('click', function() {
+            // Показываем дополнительную информацию
+            const details = this.querySelector('.timeline-details');
+            if (details) {
+                details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+    });
+    
+    // Утилитарные функции
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function showNotification(message, type = 'info') {
+        // Создаем уведомление
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        // Добавляем стили
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        `;
+        
+        // Цвета для разных типов уведомлений
+        const colors = {
+            success: '#4CAF50',
+            warning: '#FF9800',
+            error: '#F44336',
+            info: '#2196F3'
+        };
+        
+        notification.style.backgroundColor = colors[type] || colors.info;
+        
+        // Добавляем в DOM
+        document.body.appendChild(notification);
+        
+        // Удаляем через 3 секунды
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
+    // Функция debounce для оптимизации производительности
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -189,30 +277,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // Optimized scroll handler
-    const handleScroll = debounce(() => {
-        requestTick();
-    }, 10);
+    // Оптимизируем обработчик прокрутки
+    const debouncedRequestTick = debounce(requestTick, 16);
+    window.removeEventListener('scroll', requestTick);
+    window.addEventListener('scroll', debouncedRequestTick);
     
-    window.addEventListener('scroll', handleScroll);
-    
-    // Add loading animation
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        
-        // Trigger initial animations
-        setTimeout(() => {
-            const initialElements = document.querySelectorAll('.about-text, .about-image');
-            initialElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        }, 100);
-    });
-    
-    console.log('About Us page - All scripts loaded successfully');
+    console.log('Страница "О нас" - все скрипты загружены успешно');
 });
 
 // Add CSS for keyboard navigation

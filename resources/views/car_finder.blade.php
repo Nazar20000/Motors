@@ -1,12 +1,12 @@
 @extends('layout.app')
 
 @section('title-block')
-    Главная
+    Car Finder
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/car-finder.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/car-finder.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
@@ -129,8 +129,8 @@
 
 
 @push('scripts')
-    <script src="./js/script.js"></script>
-    <script src="./js/car-finder.js"></script>
+
+    <script src="{{ asset('js/car-finder.js') }}"></script>
 @endpush
 
 @endsection

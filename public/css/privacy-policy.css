@@ -1,0 +1,367 @@
+/* Privacy Policy Page Styles */
+.privacy-policy-page {
+    margin-top: 80px; /* Offset for fixed header */
+    min-height: calc(100vh - 80px);
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Page Banner */
+.page-banner {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 60px 0;
+    border-bottom: 2px solid #ffff00;
+}
+
+.page-banner h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Privacy Content */
+.privacy-content {
+    padding: 60px 0;
+}
+
+.policy-text {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.policy-text .intro {
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Notice List */
+.notice-list {
+    background-color: #2a2a2a;
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin: 30px 0;
+    border-left: 4px solid #ffff00;
+}
+
+.notice-list li {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.notice-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Policy Sections */
+.policy-section {
+    margin: 40px 0;
+    padding: 30px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.policy-section h2 {
+    color: #ffff00;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.policy-section p {
+    color: #cccccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.policy-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Control List */
+.control-list {
+    background-color: #333;
+    padding: 20px 25px;
+    border-radius: 6px;
+    margin: 20px 0;
+    border-left: 3px solid #ffff00;
+}
+
+.control-list li {
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.control-list li:last-child {
+    margin-bottom: 0;
+}
+
+.control-list li::before {
+    content: "•";
+    color: #ffff00;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Contact Info */
+.contact-info {
+    background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 40px;
+    border: 2px solid #ffff00;
+}
+
+.contact-info h3 {
+    color: #ffff00;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-info p {
+    color: #cccccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #444;
+}
+
+.contact-info li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.contact-info strong {
+    color: #ffff00;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .page-banner h1 {
+        font-size: 32px;
+    }
+    
+    .policy-text {
+        max-width: 90%;
+    }
+    
+    .policy-section {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .privacy-policy-page {
+        margin-top: 70px;
+    }
+    
+    .page-banner {
+        padding: 40px 0;
+    }
+    
+    .page-banner h1 {
+        font-size: 28px;
+    }
+    
+    .privacy-content {
+        padding: 40px 0;
+    }
+    
+    .policy-text .intro {
+        font-size: 16px;
+    }
+    
+    .policy-section {
+        padding: 20px;
+        margin: 30px 0;
+    }
+    
+    .policy-section h2 {
+        font-size: 20px;
+    }
+    
+    .policy-section p {
+        font-size: 15px;
+    }
+    
+    .notice-list {
+        padding: 20px 25px;
+    }
+    
+    .notice-list li {
+        font-size: 15px;
+    }
+    
+    .control-list {
+        padding: 15px 20px;
+    }
+    
+    .control-list li {
+        font-size: 14px;
+    }
+    
+    .contact-info {
+        padding: 25px;
+    }
+    
+    .contact-info h3 {
+        font-size: 20px;
+    }
+    
+    .contact-info li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-banner {
+        padding: 30px 0;
+    }
+    
+    .page-banner h1 {
+        font-size: 24px;
+    }
+    
+    .privacy-content {
+        padding: 30px 0;
+    }
+    
+    .policy-text {
+        max-width: 95%;
+    }
+    
+    .policy-section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .policy-section h2 {
+        font-size: 18px;
+    }
+    
+    .policy-section p {
+        font-size: 14px;
+    }
+    
+    .notice-list {
+        padding: 15px 20px;
+    }
+    
+    .notice-list li {
+        font-size: 14px;
+    }
+    
+    .control-list {
+        padding: 12px 15px;
+    }
+    
+    .control-list li {
+        font-size: 13px;
+    }
+    
+    .contact-info {
+        padding: 20px;
+    }
+    
+    .contact-info h3 {
+        font-size: 18px;
+    }
+    
+    .contact-info li {
+        font-size: 14px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .privacy-policy-page {
+        margin-top: 0;
+        background-color: white;
+        color: black;
+    }
+    
+    .page-banner {
+        background: white;
+        border-bottom: 2px solid black;
+    }
+    
+    .page-banner h1 {
+        color: black;
+    }
+    
+    .policy-section {
+        background-color: white;
+        border: 1px solid #ccc;
+    }
+    
+    .policy-section h2 {
+        color: black;
+    }
+    
+    .policy-section p {
+        color: black;
+    }
+    
+    .notice-list {
+        background-color: #f9f9f9;
+        border-left: 4px solid black;
+    }
+    
+    .notice-list li {
+        color: black;
+    }
+    
+    .control-list {
+        background-color: #f9f9f9;
+        border-left: 3px solid black;
+    }
+    
+    .control-list li {
+        color: black;
+    }
+    
+    .contact-info {
+        background: white;
+        border: 2px solid black;
+    }
+    
+    .contact-info h3 {
+        color: black;
+    }
+    
+    .contact-info li {
+        color: black;
+    }
+    
+    .contact-info strong {
+        color: black;
+    }
+} 

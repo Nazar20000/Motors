@@ -1,4 +1,4 @@
-// Global Search Functionality
+// Global search functionality
 function initializeGlobalSearch() {
   const searchIcon = document.querySelector(".search-icon")
 
@@ -8,7 +8,7 @@ function initializeGlobalSearch() {
     })
   }
 
-  // Keyboard shortcut for search (Ctrl/Cmd + K)
+  // Hotkey for search (Ctrl/Cmd + K)
   document.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === "k") {
       e.preventDefault()
@@ -30,14 +30,14 @@ function showSearchModal() {
         <div class="search-modal-overlay"></div>
         <div class="search-modal-content">
             <div class="search-header">
-                <h2>SEARCH INVENTORY</h2>
+                <h2>INVENTORY SEARCH</h2>
                 <button class="search-close" aria-label="Close search">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             <div class="search-form">
                 <div class="search-input-container">
-                    <input type="text" id="globalSearchInput" placeholder="Type a keyword to search" autocomplete="off">
+                    <input type="text" id="globalSearchInput" placeholder="Enter keyword to search" autocomplete="off">
                     <button class="voice-search-btn" aria-label="Voice search">
                         <span class="material-symbols-outlined">mic</span>
                     </button>
@@ -48,9 +48,9 @@ function showSearchModal() {
                 <div class="search-suggestions" id="searchSuggestions"></div>
                 <div class="search-filters">
                     <div class="filter-group">
-                        <label>Quick Filters:</label>
+                        <label>Quick filters:</label>
                         <div class="filter-buttons">
-                            <button class="filter-btn" data-filter="make">Make</button>
+                            <button class="filter-btn" data-filter="make">Brand</button>
                             <button class="filter-btn" data-filter="model">Model</button>
                             <button class="filter-btn" data-filter="year">Year</button>
                             <button class="filter-btn" data-filter="price">Price</button>
@@ -319,7 +319,7 @@ function initializeSearchModal(modal) {
   const voiceBtn = modal.querySelector(".voice-search-btn")
   const filterBtns = modal.querySelectorAll(".filter-btn")
 
-  // Sample search data (in real app, this would come from API)
+  // Example search data (in a real application this would come from API)
   const searchData = [
     "Tesla Model 3",
     "BMW X5",
@@ -399,7 +399,7 @@ function initializeSearchModal(modal) {
 
     searchSuggestions.classList.add("active")
 
-    // Add click handlers to suggestions
+    // Add click handlers for suggestions
     searchSuggestions.querySelectorAll(".suggestion-item").forEach((item) => {
       item.addEventListener("click", function () {
         selectSuggestion(this.textContent)
@@ -472,7 +472,7 @@ function initializeSearchModal(modal) {
       }
 
       recognition.onerror = () => {
-        console.error("Voice search not available")
+        console.error("Voice search unavailable")
       }
 
       recognition.onend = () => {
@@ -481,7 +481,7 @@ function initializeSearchModal(modal) {
 
       recognition.start()
     } else {
-      console.warn("Voice search not supported in this browser")
+      console.warn("Voice search is not supported in this browser")
     }
   })
 
@@ -492,7 +492,7 @@ function initializeSearchModal(modal) {
     })
   })
 
-  // Close modal functionality
+  // Modal close functionality
   function closeSearchModal() {
     modal.classList.remove("active")
     setTimeout(() => {
@@ -514,9 +514,73 @@ function initializeSearchModal(modal) {
 // Initialize global search when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initializeGlobalSearch()
+  initializeMobileMenu()
 })
 
-// Function to show notifications
+// Mobile menu functionality
+function initializeMobileMenu() {
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn')
+  const nav = document.querySelector('.nav')
+  const body = document.body
+  
+  if (mobileMenuBtn && nav) {
+    
+    mobileMenuBtn.addEventListener('click', function(e) {
+      e.preventDefault()
+      e.stopPropagation()
+      
+      nav.classList.toggle('active')
+      
+      // Change icon depending on menu state
+      const icon = this.querySelector('.material-symbols-outlined')
+      if (nav.classList.contains('active')) {
+        icon.textContent = 'close'
+                  // Prevent page scrolling
+        body.classList.add('menu-open')
+      } else {
+        icon.textContent = 'menu'
+        // Restore page scrolling
+        body.classList.remove('menu-open')
+      }
+    })
+    
+    // Close menu when clicking on navigation link
+    const navLinks = nav.querySelectorAll('.nav-link')
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active')
+        const icon = mobileMenuBtn.querySelector('.material-symbols-outlined')
+        icon.textContent = 'menu'
+        // Restore page scrolling
+        body.classList.remove('menu-open')
+      })
+    })
+    
+    // Close menu when clicking outside its area
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        nav.classList.remove('active')
+        const icon = mobileMenuBtn.querySelector('.material-symbols-outlined')
+        icon.textContent = 'menu'
+        // Возвращаем прокрутку страницы
+        body.classList.remove('menu-open')
+      }
+    })
+    
+    // Close menu when window size changes
+    window.addEventListener('resize', () => {
+              if (window.innerWidth > 768) {
+          nav.classList.remove('active')
+          const icon = mobileMenuBtn.querySelector('.material-symbols-outlined')
+          icon.textContent = 'menu'
+          // Restore page scrolling
+          body.classList.remove('menu-open')
+        }
+    })
+  }
+}
+
+// Function for showing notifications
 function showNotification(message, type) {
   console.log(`Notification (${type}): ${message}`)
 }

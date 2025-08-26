@@ -1,0 +1,198 @@
+/* Styles for authentication pages */
+
+.auth-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #2a2a2a;
+    border-radius: 10px;
+    border: 1px solid #444;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #cccccc;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #333;
+    color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #ffff00;
+    box-shadow: 0 0 0 2px rgba(255,255,0,0.25);
+}
+
+.auth-form input::placeholder {
+    color: #888;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    background: #ffff00;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+    background: #ffd700;
+}
+
+.auth-form button:active {
+    transform: translateY(1px);
+}
+
+.error {
+    color: #ff6b6b;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: rgba(255, 107, 107, 0.1);
+    border: 1px solid #ff6b6b;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.error p {
+    margin: 0;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.auth-links a {
+    color: #ffff00;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+/* Remember Me Checkbox Styles */
+.remember-me {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.remember-me label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #ffff00;
+    cursor: pointer;
+}
+
+.remember-me span {
+    user-select: none;
+}
+
+.remember-me:hover span {
+    color: #333;
+}
+
+/* Responsiveness for mobile devices */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 80px 20px;
+        padding: 25px;
+    }
+    
+    .auth-container h2 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .auth-form input {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .auth-form button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        margin: 50px 15px;
+        padding: 20px;
+    }
+    
+    .auth-container h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .auth-form {
+        gap: 12px;
+    }
+    
+    .auth-form input {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .auth-form button {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    .error {
+        padding: 8px;
+        font-size: 12px;
+    }
+} 

@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    'driver' => env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -96,9 +96,7 @@ return [
     | When using one of the framework's cache driven session backends, you may
     | define the cache store which should be used to store the session data
     | between requests. This must match one of your defined cache stores.
-    |
     | Affects: "dynamodb", "memcached", "redis"
-    |
     */
 
     'store' => env('SESSION_STORE'),
@@ -109,8 +107,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Some session drivers must manually sweep their storage location to get
-    | rid of old sessions from storage. Here are the chances that it will
-    | happen on a given request. By default, the odds are 2 out of 100.
+    | rid of old sessions from storage. Here are the chances that it happens
+    | on a given request. By default, the odds are 2 out of 100.
     |
     */
 
@@ -121,15 +119,15 @@ return [
     | Session Cookie Name
     |--------------------------------------------------------------------------
     |
-    | Here you may change the name of the session cookie that is created by
-    | the framework. Typically, you should not need to change this value
-    | since doing so does not grant a meaningful security improvement.
+    | Here you may change the name of the cookie used to identify a session
+    | instance by ID. The name specified here will get used every time a
+    | new session cookie is created by the framework for every driver.
     |
     */
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::snake((string) env('APP_NAME', 'laravel')).'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
     ),
 
     /*
@@ -139,20 +137,20 @@ return [
     |
     | The session cookie path determines the path for which the cookie will
     | be regarded as available. Typically, this will be the root path of
-    | your application, but you're free to change this when necessary.
+    | your application but you are free to modify this when necessary.
     |
     */
 
-    'path' => env('SESSION_PATH', '/'),
+    'path' => '/',
 
     /*
     |--------------------------------------------------------------------------
     | Session Cookie Domain
     |--------------------------------------------------------------------------
     |
-    | This value determines the domain and subdomains the session cookie is
-    | available to. By default, the cookie will be available to the root
-    | domain and all subdomains. Typically, this shouldn't be changed.
+    | Here you may change the domain of the cookie used to identify a session
+    | in your application. This will determine which domains the cookie is
+    | available to in your application. A sensible default has been set.
     |
     */
 
@@ -178,7 +176,7 @@ return [
     |
     | Setting this value to true will prevent JavaScript from accessing the
     | value of the cookie and the cookie will only be accessible through
-    | the HTTP protocol. It's unlikely you should disable this option.
+    | the HTTP protocol. You are free to modify this option if needed.
     |
     */
 
@@ -191,11 +189,7 @@ return [
     |
     | This option determines how your cookies behave when cross-site requests
     | take place, and can be used to mitigate CSRF attacks. By default, we
-    | will set this value to "lax" to permit secure cross-site requests.
-    |
-    | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
-    |
-    | Supported: "lax", "strict", "none", null
+    | will set this value to "lax" since this is a secure default value.
     |
     */
 

@@ -1,0 +1,29 @@
+# Production Cron Jobs for D.N B Motors V
+# Add these to your crontab: crontab -e
+
+# Database backup - daily at 2 AM
+0 2 * * * /var/www/motors/backup-database.sh
+
+# Production monitoring - every 5 minutes
+*/5 * * * * /var/www/motors/monitor-production.sh
+
+# Clear old logs - weekly on Sunday at 3 AM
+0 3 * * 0 find /var/www/motors/storage/logs -name "*.log" -mtime +30 -delete
+
+# Clear old cache files - daily at 4 AM
+0 4 * * * find /var/www/motors/storage/framework/cache -name "*.php" -mtime +7 -delete
+
+# Check SSL certificate expiry - daily at 9 AM
+0 9 * * * /usr/bin/curl -s https://dnbmotorsv.website > /dev/null
+
+# System maintenance - weekly on Monday at 1 AM
+0 1 * * 1 apt-get update && apt-get upgrade -y
+
+# Log rotation - daily at 5 AM
+0 5 * * * /usr/sbin/logrotate /etc/logrotate.d/motors
+
+# Performance optimization - daily at 6 AM
+0 6 * * * cd /var/www/motors && php artisan config:cache && php artisan route:cache && php artisan view:cache
+
+# Health check - every 15 minutes
+*/15 * * * * /usr/bin/curl -s https://dnbmotorsv.website/health > /dev/null

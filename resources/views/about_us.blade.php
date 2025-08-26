@@ -1,12 +1,12 @@
 @extends('layout.app')
 
 @section('title-block')
-    Главная
+    About Us
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/about-us.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about-us.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
@@ -24,22 +24,24 @@
                 <div class="about-text">
                     <div class="welcome-header">
                         <h2>WELCOME TO</h2>
-                        <h1>BUCKETBUDDY AUTO LLC</h1>
+                        <h1>D.N B Motors V</h1>
                     </div>
                     
                     <div class="about-description">
-                        <p>With years of experience serving the area, our dealership is dedicated to offering high-quality, pre-owned vehicles to our customers. From the moment you walk through our door, we're committed to providing you with a great car-buying experience. With our skilled sales staff and financing options, we'll help you get the vehicle you want, at the great price you deserve.</p>
+                        <p>With years of experience in the automotive industry, we take pride in providing high-quality, reliable vehicles at competitive prices. Our dealership is built on trust, transparency, and a true passion for helping customers find the right car to fit their needs and budget.</p>
                         
-                        <p>Our goal is for you to be so delighted with your vehicle purchase that you'll come see us when you need your next car and will happily recommend us to friends and family. Customer referrals are the ultimate compliment! With many vehicle shopping options available, we differentiate ourselves by understanding our local car-buying community and satisfying its needs by helping valued local customers like you, find the vehicle that's the "right fit".</p>
+                        <p>From the moment you step onto our lot or visit us online, our goal is to make your car-buying experience smooth, honest, and hassle-free. Whether you're looking to finance, trade-in, or purchase with cash, our knowledgeable team is here to guide you through every step of the process.</p>
                         
-                        <p>Feel free to browse our inventory online and check out the Featured Vehicles section on our homepage. If you see a vehicle you like, submit an online quote request, or contact us to schedule a test drive.</p>
+                        <p>We’re not just here to sell cars — we’re here to build long-lasting relationships. That’s why so many of our customers come back for their next purchase and refer friends and family. We work hard to earn your trust and exceed your expectations.
+</p>
                         
-                        <p>To learn more about our dealership and how we can help with your next vehicle purchase, please call or stop by in person. We look forward to meeting you.</p>
+                        <p>Explore our current inventory online or visit us in person to see what we have available. If you find something you like, give us a call or schedule a test drive — we’ll take care of the rest.
+                            We look forward to helping you drive away in a vehicle you love</p>
                     </div>
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%BE%D1%82%202025-07-19%2001-38-11-BGONVS8dPdxNU7clmb81V728wKPt4A.png" alt="BucketBuddy Auto LLC Showroom" />
+                    <img src="./img/banner.jpg" alt="BucketBuddy Auto LLC Showroom" />
                     <div class="image-overlay">
                         <div class="overlay-content">
                             <h3>Visit Our Showroom</h3>
@@ -52,8 +54,8 @@
     </main>
 
 @push('scripts')
-    <script src="./js/script.js"></script>
-    <script src="./js/about-us.js"></script>
+
+    <script src="{{ asset('js/about-us.js') }}"></script>
 @endpush
 
 @endsection

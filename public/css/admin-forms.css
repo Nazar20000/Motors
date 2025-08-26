@@ -1,0 +1,592 @@
+/* Стили для форм админ-панели */
+
+.admin-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #2a2a2a;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.admin-form input, 
+.admin-form select, 
+.admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 16px;
+    background: #333;
+    color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.admin-form input:focus, 
+.admin-form select:focus, 
+.admin-form textarea:focus {
+    outline: none;
+    border-color: #ffff00;
+}
+
+.admin-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.admin-form button {
+    background-color: #ffff00;
+    color: #000000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.admin-form button:hover {
+    background-color: #ffd700;
+}
+
+/* Улучшенные стили для загрузки файлов */
+.file-upload-container {
+    margin: 20px 0;
+}
+
+.file-upload-label {
+    display: block;
+    border: 2px dashed #ffff00;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #333;
+    color: #ffff00;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload-label:hover {
+    background-color: #444;
+    border-color: #ffd700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 0, 0.2);
+}
+
+.file-upload-label:active {
+    transform: translateY(0);
+}
+
+.file-upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload-content .material-symbols-outlined {
+    font-size: 48px;
+    color: #ffff00;
+}
+
+.upload-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.upload-hint {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.upload-info {
+    font-size: 12px;
+    color: #999999;
+    margin-top: 10px;
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Статус загрузки */
+.upload-status {
+    margin: 15px 0;
+    padding: 12px;
+    background: #28a745;
+    border-radius: 6px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-status .material-symbols-outlined {
+    color: #ffffff;
+}
+
+/* Ошибки загрузки */
+.upload-error {
+    margin: 15px 0;
+    padding: 12px;
+    background: #dc3545;
+    border-radius: 6px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-error .material-symbols-outlined {
+    color: #ffffff;
+}
+
+/* Контейнер превью изображений */
+.image-preview-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 15px;
+    background: #333;
+    border-radius: 6px;
+    border: 1px solid #555;
+    min-height: 60px;
+}
+
+.image-preview-container:empty::before {
+    content: "No images selected";
+    color: #666;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Превью изображений */
+.image-preview-item {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.image-preview-item:hover {
+    transform: scale(1.05);
+}
+
+.image-preview-item img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-preview-item .remove-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.image-preview-item .remove-btn:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
+/* Drag and drop стили */
+.file-upload-label.drag-over {
+    background-color: #444;
+    border-color: #ffd700;
+    transform: scale(1.02);
+}
+
+.file-upload-label.drag-over .file-upload-content {
+    opacity: 0.7;
+}
+
+/* Анимация загрузки */
+@keyframes uploadPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.file-upload-label.uploading {
+    animation: uploadPulse 1s infinite;
+}
+
+.file-label {
+    border: 2px dashed #ffff00;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    background: #333;
+    color: #ffff00;
+}
+
+.file-label:hover {
+    background-color: #444;
+}
+
+/* Стили для существующих изображений */
+.current-images {
+    margin: 20px 0;
+    padding: 15px;
+    background: #333;
+    border-radius: 6px;
+    border: 1px solid #555;
+}
+
+.current-images h4 {
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.image-item {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    background: #2a2a2a;
+    border-radius: 6px;
+    border: 1px solid #555;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.image-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.image-item img {
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #555;
+}
+
+.image-item p {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #cccccc;
+}
+
+.delete-image-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.delete-image-btn:hover {
+    background: #c82333;
+}
+
+.debug-info {
+    background: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #cccccc;
+    border: 1px solid #555;
+}
+
+/* Стили для таблиц админ-панели */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.admin-table th {
+    background-color: #333;
+    font-weight: 600;
+    color: #ffff00;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.admin-table tr:hover {
+    background-color: #3a3a3a;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-active { 
+    background-color: #28a745; 
+    color: #ffffff; 
+}
+
+.status-inactive { 
+    background-color: #dc3545; 
+    color: #ffffff; 
+}
+
+.status-available { 
+    background-color: #28a745; 
+    color: #ffffff; 
+}
+
+.status-sold { 
+    background-color: #dc3545; 
+    color: #ffffff; 
+}
+
+.status-reserved { 
+    background-color: #ffc107; 
+    color: #000000; 
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-edit, 
+.btn-delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a, 
+.pagination span {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #555;
+    text-decoration: none;
+    color: #ffff00;
+    background: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .current {
+    background-color: #ffff00;
+    color: #000000;
+    border-color: #ffff00;
+}
+
+.pagination a:hover {
+    background-color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-form {
+        padding: 15px;
+        margin: 0 10px;
+    }
+    
+    .admin-form input, 
+    .admin-form select, 
+    .admin-form textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .admin-table {
+        font-size: 12px;
+    }
+    
+    .admin-table th, 
+    .admin-table td {
+        padding: 8px 6px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn-edit, 
+    .btn-delete {
+        padding: 4px 8px;
+        font-size: 11px;
+        text-align: center;
+    }
+    
+    .pagination a, 
+    .pagination span {
+        padding: 6px 8px;
+        margin: 0 2px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-form {
+        padding: 10px;
+        margin: 0 5px;
+    }
+    
+    .admin-form input, 
+    .admin-form select, 
+    .admin-form textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+    
+    .admin-table {
+        font-size: 11px;
+    }
+    
+    .admin-table th, 
+    .admin-table td {
+        padding: 6px 4px;
+    }
+    
+    .status-badge {
+        padding: 2px 4px;
+        font-size: 10px;
+    }
+    
+    .pagination a, 
+    .pagination span {
+        padding: 4px 6px;
+        margin: 0 1px;
+        font-size: 11px;
+    }
+} 
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .file-upload-label {
+        padding: 20px;
+    }
+    
+    .file-upload-content .material-symbols-outlined {
+        font-size: 36px;
+    }
+    
+    .upload-text {
+        font-size: 16px;
+    }
+    
+    .upload-hint {
+        font-size: 12px;
+    }
+    
+    .image-preview-container {
+        gap: 8px;
+    }
+    
+    .image-preview-item img {
+        width: 60px;
+        height: 45px;
+    }
+    
+    .current-images {
+        padding: 10px;
+    }
+    
+    .image-item {
+        margin: 5px;
+        padding: 8px;
+    }
+    
+    .image-item img {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .file-upload-label {
+        padding: 15px;
+    }
+    
+    .file-upload-content .material-symbols-outlined {
+        font-size: 32px;
+    }
+    
+    .upload-text {
+        font-size: 14px;
+    }
+    
+    .image-preview-item img {
+        width: 50px;
+        height: 38px;
+    }
+    
+    .image-item img {
+        width: 60px;
+    }
+} 

@@ -1,0 +1,92 @@
+/* Исправление проблемы с перекрытием меню на странице деталей */
+
+/* Основная страница */
+.vehicle-detail-page {
+    position: relative;
+    z-index: 1;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Sticky header страницы деталей */
+.detail-header {
+    position: sticky !important;
+    top: 96px !important; /* ещё ниже под основным меню */
+    z-index: 99 !important;
+    background: rgba(26,26,26,0.95) !important;
+    backdrop-filter: blur(5px) !important;
+    border-bottom: 1px solid #2a2a2a !important;
+}
+
+/* Основной контент */
+.detail-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 56px !important; /* увеличенный отступ, чтобы контент не скрывался */
+}
+
+/* Секция с изображениями */
+.image-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Модальные окна */
+.modal {
+    z-index: 10000 !important;
+}
+
+/* Плавающая кнопка контакта */
+.floating-contact-btn {
+    z-index: 999 !important;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .vehicle-detail-page {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .detail-header {
+        top: 88px !important;
+    }
+    .detail-content {
+        padding-top: 40px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .vehicle-detail-page {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .detail-header {
+        top: 72px !important;
+    }
+    .detail-content {
+        padding-top: 32px !important;
+    }
+}
+
+/* Дополнительные исправления для различных браузеров */
+@supports (-webkit-backdrop-filter: none) {
+    .detail-header {
+        -webkit-backdrop-filter: blur(5px);
+    }
+}
+
+@supports (backdrop-filter: none) {
+    .detail-header {
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* Исправление для Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .detail-header {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}

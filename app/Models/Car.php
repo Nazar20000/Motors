@@ -2,14 +2,206 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'brand', 'model', 'year', 'price', 'description', 'image', 'published'
+        'brand_id',
+        'car_model_id', 
+        'year',
+        'mileage',
+        'price',
+        'color_id',
+        'body_type_id',
+        'transmission_id',
+        'status',
+        'vin',
+        'engine_size',
+        'horsepower',
+        'fuel_type',
+        'drivetrain',
+        'doors',
+        'interior_color',
+        'description',
+        'image',
+        'published',
+        'carfax_url'
     ];
-    public function images() {
-        return $this->hasMany(CarImage::class);
+
+    protected $casts = [
+        'price' => 'decimal:2',
+        'mileage' => 'integer',
+        'horsepower' => 'integer',
+        'published' => 'boolean',
+        'year' => 'integer'
+    ];
+
+    // Calculate monthly payment with 7.29% interest rate and 10% down payment
+    public function getMonthlyPaymentAttribute()
+    {
+        // Check if price is valid
+        if (!$this->price || $this->price <= 0) {
+            return 0;
+        }
+        
+        $price = (float) $this->price;
+        $downPayment = $price * 0.1; // 10% down payment
+        $loanAmount = $price - $downPayment;
+        $interestRate = 7.29; // Annual interest rate
+        $loanTerm = 60; // Months
+        $monthlyRate = $interestRate / 100 / 12;
+        
+        if ($monthlyRate > 0 && $loanAmount > 0) {
+            $monthlyPayment = ($loanAmount * $monthlyRate * pow(1 + $monthlyRate, $loanTerm)) / 
+                             (pow(1 + $monthlyRate, $loanTerm) - 1);
+        } else {
+            $monthlyPayment = $loanAmount / $loanTerm;
+        }
+        
+        return round($monthlyPayment);
+    }
+
+                // Relationships
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class);
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
+    }
+
+    public function bodyType()
+    {
+        return $this->belongsTo(BodyType::class);
+    }
+
+    public function transmission()
+    {
+        return $this->belongsTo(Transmission::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(CarImage::class)->orderBy('id', 'asc');
+    }
+
+    public function equipment()
+    {
+        return $this->hasMany(CarEquipment::class)->ordered();
+    }
+
+                // Scopes
+    public function scopeAvailable($query)
+    {
+        return $query->where('status', 'available');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
+    public function scopeByBrand($query, $brandId)
+    {
+        return $query->where('brand_id', $brandId);
+    }
+
+    public function scopeByModel($query, $modelId)
+    {
+        return $query->where('car_model_id', $modelId);
+    }
+
+    public function scopeByColor($query, $colorId)
+    {
+        return $query->where('color_id', $colorId);
+    }
+
+    public function scopeByBodyType($query, $bodyTypeId)
+    {
+        return $query->where('body_type_id', $bodyTypeId);
+    }
+
+    public function scopeByTransmission($query, $transmissionId)
+    {
+        return $query->where('transmission_id', $transmissionId);
+    }
+
+    public function scopeByYearRange($query, $minYear, $maxYear)
+    {
+        return $query->whereBetween('year', [$minYear, $maxYear]);
+    }
+
+    public function scopeByPriceRange($query, $minPrice, $maxPrice)
+    {
+        return $query->whereBetween('price', [$minPrice, $maxPrice]);
+    }
+
+    public function scopeByMileageRange($query, $minMileage, $maxMileage)
+    {
+        return $query->whereBetween('mileage', [$minMileage, $maxMileage]);
+    }
+
+                // Accessors
+    public function getFullNameAttribute()
+    {
+        $brand = $this->brand ? $this->brand->name : '';
+        $model = $this->carModel ? $this->carModel->name : '';
+        $year = $this->year;
+        
+        return trim("$brand $model $year");
+    }
+
+    public function getFormattedPriceAttribute()
+    {
+        return '$' . number_format($this->price, 0);
+    }
+
+    public function getFormattedMileageAttribute()
+    {
+        return $this->mileage ? number_format($this->mileage) . ' km' : 'N/A';
+    }
+
+    public function getStatusLabelAttribute()
+    {
+        return match($this->status) {
+                                'available' => 'Available',
+                    'sold' => 'Sold',
+                    'reserved' => 'Reserved',
+                    'hidden' => 'Hidden',
+                    default => 'Unknown'
+        };
+    }
+
+                // Methods
+    public function isAvailable()
+    {
+        return $this->status === 'available';
+    }
+
+    public function isSold()
+    {
+        return $this->status === 'sold';
+    }
+
+    public function isReserved()
+    {
+        return $this->status === 'reserved';
+    }
+
+    public function isHidden()
+    {
+        return $this->status === 'hidden';
     }
 }
+

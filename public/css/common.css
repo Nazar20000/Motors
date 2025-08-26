@@ -1,0 +1,26 @@
+/* Common reusable utilities extracted from style.css */
+
+/* Badges used in vehicle cards */
+.badge {
+    background-color: #ffff00;
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Generic spinner (if any component toggles .loading) */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffff00;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

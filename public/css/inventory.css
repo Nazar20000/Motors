@@ -1,721 +1,1235 @@
-/* Inventory Page Specific Styles - FIXED VERSION */
+/* Inventory Page - Modern Dark Theme */
+
+/* Принудительные стили для inventory страницы */
 .inventory-page {
-    margin-top: 70px;
-    padding: 40px 0;
-    background-color: #1a1a1a;
-    min-height: 100vh;
+    background: #0a0a0a !important;
+    color: white !important;
+    font-family: 'Montserrat', sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+    padding-top: 80px !important; /* Отступ для фиксированного header */
 }
 
-.inventory-layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
+.inventory-page body {
+    background: #0a0a0a !important;
+    color: white !important;
+    font-family: 'Montserrat', sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* Filters Sidebar - IMPROVED */
-.filters-sidebar {
-    background-color: #2a2a2a;
-    padding: 30px 20px;
-    border-radius: 8px;
-    height: fit-content;
+/* Header для inventory страницы */
+.inventory-page .header {
+    background: #1a1a1a !important;
+    padding: 16px 0 !important;
+    border-bottom: 1px solid #2a2a2a !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
 }
 
-.filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #444;
+.inventory-page .header-content {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
-.filter-header h2 {
-    color: #ffffff;
-    font-size: 18px;
+.inventory-page .brand {
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-.filter-header .material-symbols-outlined {
-    color: #ffff00;
+.inventory-page .brand-name {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: white !important;
+    margin: 0 !important;
 }
 
-.filter-group {
-    margin-bottom: 20px;
-    padding: 15px 0;
-    border-bottom: 1px solid #444;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.inventory-page .brand-subtitle {
+    font-size: 12px !important;
+    color: #cccccc !important;
+    margin: 0 !important;
 }
 
-.filter-group:hover {
-    background-color: rgba(255, 255, 0, 0.1);
-    border-radius: 5px;
-    margin: 0 -10px 20px -10px;
-    padding: 15px 10px;
+/* Специфичные стили для поиска на странице inventory */
+.inventory-page .search-icon {
+    color: #ffff00 !important;
+    cursor: pointer !important;
+    transition: color 0.2s !important;
 }
 
-.filter-group h3 {
-    color: #ffffff;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.3s;
+.inventory-page .search-icon:hover {
+    color: #ffd700 !important;
 }
 
-.filter-group.active h3 {
-    color: #ffff00;
+/* Main Layout */
+.inventory-page .inventory-layout {
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+    gap: 0 !important;
+    min-height: calc(100vh - 80px) !important;
+    margin-top: 80px !important; /* Отступ для фиксированного header */
 }
 
-.filter-group .material-symbols-outlined {
-    color: #cccccc;
-    font-size: 20px;
-    transition: transform 0.3s, color 0.3s;
+/* Left Sidebar - Filters */
+.inventory-page .filter-sidebar {
+    background: #1a1a1a !important;
+    padding: 24px !important;
+    border-right: 1px solid #2a2a2a !important;
+    overflow-y: auto !important;
 }
 
-.filter-group.active .material-symbols-outlined {
-    transform: rotate(180deg);
-    color: #ffff00;
+.inventory-page .filter-mode {
+    display: flex !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important;
 }
 
-.filter-options {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin-top: 0;
+.inventory-page .filter-tab {
+    flex: 1 !important;
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    color: #cccccc !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
 }
 
-.filter-options.active {
-    max-height: 200px;
-    margin-top: 15px;
+.inventory-page .filter-tab.active {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border-color: #ffff00 !important;
 }
 
-.filter-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    color: #cccccc;
-    font-size: 13px;
+.inventory-page .filter-tab:hover:not(.active) {
+    background: #3a3a3a !important;
+    border-color: #4a4a4a !important;
 }
 
-.filter-option input[type="checkbox"] {
-    accent-color: #ffff00;
+.inventory-page .filter-sections {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
 }
 
-.filter-option:hover {
-    color: #ffffff;
+.inventory-page .filter-section {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
 }
 
-.reset-filters {
-    background-color: #333;
-    color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-    transition: all 0.3s;
-    font-weight: bold;
+.inventory-page .filter-section.active {
+    border-color: #ffff00 !important;
 }
 
-.reset-filters:hover {
-    background-color: #ffff00;
-    color: #000;
-    transform: translateY(-2px);
+.inventory-page .filter-header {
+    padding: 16px !important;
+    background: #333 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
 }
 
-/* Inventory Content - IMPROVED */
-.inventory-content {
-    background-color: #2a2a2a;
-    border-radius: 8px;
-    padding: 30px;
+.inventory-page .filter-header:hover {
+    background: #3a3a3a !important;
 }
 
-.inventory-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #444;
-    flex-wrap: wrap;
-    gap: 15px;
+.inventory-page .filter-content {
+    padding: 16px !important;
+    display: none !important;
 }
 
-.sort-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.inventory-page .filter-section.active .filter-content {
+    display: block !important;
 }
 
-.sort-section label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #ffffff;
-    font-size: 14px;
-    cursor: pointer;
+.inventory-page .filter-input {
+    width: 100% !important;
+    padding: 12px !important;
+    background: #333 !important;
+    border: 1px solid #4a4a4a !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
 }
 
-.sort-section input[type="checkbox"] {
-    accent-color: #ffff00;
+.inventory-page .filter-input:focus {
+    outline: none !important;
+    border-color: #ffff00 !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 0, 0.2) !important;
 }
 
-.sort-select {
-    background-color: #333;
-    color: #ffffff;
-    border: 1px solid #555;
-    padding: 8px 12px;
-    border-radius: 3px;
-    font-size: 14px;
-    transition: border-color 0.3s;
+.inventory-page .filter-select {
+    width: 100% !important;
+    padding: 12px !important;
+    background: #333 !important;
+    border: 1px solid #4a4a4a !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
 }
 
-.sort-select:focus {
-    outline: none;
-    border-color: #ffff00;
+.inventory-page .filter-select:focus {
+    outline: none !important;
+    border-color: #ffff00 !important;
 }
 
-.results-info {
-    color: #cccccc;
-    font-size: 14px;
-    white-space: nowrap;
+.inventory-page .price-range,
+.inventory-page .year-range {
+    display: flex !important;
+    gap: 8px !important;
 }
 
-/* Inventory Grid - IMPROVED */
-.inventory-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+.inventory-page .price-range .filter-input,
+.inventory-page .year-range .filter-input {
+    flex: 1 !important;
+    margin-bottom: 0 !important;
 }
 
-.inventory-card {
-    background: #232323;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-    padding: 0 0 18px 0;
-    margin-bottom: 32px;
-    transition: box-shadow 0.2s, transform 0.2s;
-    width: 370px;
-    overflow: hidden;
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.inventory-card:hover {
-    box-shadow: 0 8px 32px #ffd60033;
-    border: 2px solid #ffd600;
-    transform: translateY(-4px) scale(1.01);
-}
-.vehicle-image img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    border-radius: 0 0 0 0;
-    display: block;
-}
-.vehicle-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    margin-top: 18px;
-    padding: 0 18px;
-}
-.vehicle-title {
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 4px #0008;
-    text-align: center;
-}
-.vehicle-year-badge {
-    font-size: 1rem;
-    color: #fff;
-    background: #181818;
-    border-radius: 8px;
-    padding: 2px 10px;
-    margin-left: 8px;
-    font-weight: 700;
-    min-width: 44px;
-    text-align: center;
-}
-.price-tag {
-    background: linear-gradient(90deg, #ffd600 80%, #fff200 100%);
-    color: #222;
-    font-size: 1.4rem;
-    font-weight: 900;
-    border-radius: 10px;
-    margin: 14px 0 10px 0;
-    padding: 12px 0;
-    box-shadow: 0 2px 8px #ffd60033;
-    display: block;
-    text-align: center;
-    letter-spacing: 1px;
-    width: 90%;
-}
-.specs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px 0;
-    margin: 18px 0 10px 0;
-    padding: 0 18px;
-    width: 100%;
-    justify-items: center;
-}
-.spec-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #fff;
-    font-size: 1.05rem;
-    min-width: 60px;
-    font-weight: 600;
-    background: #232323;
-    border-radius: 6px;
-    padding: 4px 10px;
-    justify-content: center;
-}
-.spec-item .material-symbols-outlined {
-    color: #ffd600;
-    font-size: 22px;
-}
-.carfax-section {
-    margin-top: 12px;
-    display: flex;
-    gap: 10px;
-    padding: 0 18px;
-    justify-content: center;
-    width: 100%;
-}
-.carfax-badge {
-    background: linear-gradient(90deg, #333 70%, #444 100%);
-    padding: 8px 18px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 1px 8px #0002;
-    transition: background 0.2s;
-}
-.carfax-badge strong {
-    color: #fff;
-    font-size: 1.08rem;
-    margin: 0 7px;
-}
-.carfax-value {
-    background: #4CAF50;
-    color: #fff;
-    padding: 4px 14px;
-    border-radius: 6px;
-    font-weight: bold;
-    margin-left: 7px;
-    font-size: 0.98rem;
-    box-shadow: 0 1px 4px #4CAF5044;
-}
-.apply-online-btn {
-    background: #ffd600;
-    color: #222;
-    border: none;
-    padding: 8px 22px;
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 8px #ffd60033;
-    margin-left: auto;
-}
-.apply-online-btn:hover {
-    background: #fff200;
-    color: #000;
-    box-shadow: 0 2px 12px #ffd60066;
+.inventory-page .filter-footer {
+    margin-top: 24px !important;
 }
 
-.carfax-value.good {
-    background-color: #4CAF50;
+.inventory-page .see-all-filters {
+    width: 100% !important;
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
 }
 
-.carfax-value.great {
-    background-color: #2E7D32;
+.inventory-page .see-all-filters:hover {
+    background: #ffd700 !important;
 }
 
-.cargurus-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+/* Right Content */
+.inventory-page .inventory-content {
+    padding: 24px !important;
+    background: #0a0a0a !important;
 }
 
-.cargurus-badge:hover {
-    background-color: #45a049;
+.inventory-page .inventory-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important;
+    gap: 24px !important;
 }
 
-.cargurus-text {
-    font-style: italic;
+.inventory-page .no-cars-found {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 400px !important;
+    text-align: center !important;
 }
 
-/* Pagination - IMPROVED */
-.pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    flex-wrap: wrap;
-    gap: 15px;
+.inventory-page .no-cars-content {
+    max-width: 400px !important;
 }
 
-.page-numbers {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+.inventory-page .no-cars-content .material-symbols-outlined {
+    font-size: 64px !important;
+    color: #666 !important;
+    margin-bottom: 16px !important;
 }
 
-.page-number {
-    background-color: #333;
-    color: #ffffff;
-    padding: 8px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-    min-width: 40px;
-    text-align: center;
+.inventory-page .no-cars-content h3 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
 }
 
-.page-number.active {
-    background-color: #ffff00;
-    color: #000;
-    border-color: #ffff00;
+.inventory-page .no-cars-content p {
+    color: #cccccc !important;
+    margin-bottom: 24px !important;
 }
 
-.page-number:hover:not(.active) {
-    background-color: #555;
-    border-color: #ffff00;
+.inventory-page .clear-filters-btn {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
 }
 
-.page-dots {
-    color: #cccccc;
-    padding: 0 5px;
+.inventory-page .clear-filters-btn:hover {
+    background: #ffd700 !important;
 }
 
-.pagination .material-symbols-outlined {
-    color: #cccccc;
-    cursor: pointer;
-    transition: color 0.3s;
-    font-size: 24px;
+/* Vehicle Cards */
+.inventory-page .inventory-grid .vehicle-card {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 350px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-.pagination .material-symbols-outlined:hover {
-    color: #ffff00;
+.inventory-page .inventory-grid .vehicle-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    border-color: #ffff00 !important;
 }
 
-/* Recently Viewed Section - IMPROVED */
-.recently-viewed {
-    background-color: #2a2a2a;
-    padding: 60px 0;
+.inventory-page .card-header {
+    padding: 16px !important;
+    background: #2a2a2a !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
 }
 
-.recently-viewed h2 {
-    color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 40px;
-    text-align: center;
+.inventory-page .header-left .apply-online-text {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    color: #ffff00 !important;
+    text-transform: uppercase !important;
 }
 
-.recently-viewed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.inventory-page .header-right {
+    display: flex !important;
+    gap: 8px !important;
 }
 
-.recently-viewed-card {
-    background-color: #1a1a1a;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s;
-    cursor: pointer;
+.inventory-page .icon-btn {
+    background: #333 !important;
+    border: 1px solid #4a4a4a !important;
+    color: #cccccc !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.recently-viewed-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.inventory-page .icon-btn:hover {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    transform: scale(1.1) !important;
 }
 
-.card-image {
-    position: relative;
-    height: 150px;
-    overflow: hidden;
+.inventory-page .icon-btn .material-symbols-outlined {
+    font-size: 16px !important;
 }
 
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
+.inventory-page .inventory-grid .vehicle-image-container {
+    position: relative !important;
+    height: 200px !important;
+    flex-shrink: 0 !important;
 }
 
-.recently-viewed-card:hover .card-image img {
-    transform: scale(1.1);
+.inventory-page .inventory-grid .vehicle-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
 }
 
-.card-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    border-radius: 5px;
+.inventory-page .inventory-grid .vehicle-card:hover .vehicle-image {
+    transform: scale(1.05) !important;
 }
 
-.card-overlay h3 {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+.inventory-page .car-model-overlay {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    backdrop-filter: blur(4px) !important;
 }
 
-.card-info {
-    padding: 15px;
+.inventory-page .model-text {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
-.card-info h4 {
-    color: #ffffff;
-    font-size: 14px;
-    margin-bottom: 5px;
+.inventory-page .year-engine-overlay {
+    position: absolute !important;
+    bottom: 12px !important;
+    right: 12px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    backdrop-filter: blur(4px) !important;
 }
 
-.card-price {
-    color: #ffff00;
-    font-size: 16px;
-    font-weight: bold;
+.inventory-page .year-text {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Loading states */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+.inventory-page .engine-text {
+    font-size: 10px !important;
+    color: #cccccc !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #333;
-    border-top: 3px solid #ffff00;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+.inventory-page .car-title-price {
+    padding: 16px !important;
+    border-bottom: 1px solid #2a2a2a !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.inventory-page .car-title {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
 }
 
-/* Responsive Design - IMPROVED */
-@media (max-width: 1200px) {
-    .inventory-layout {
-        grid-template-columns: 280px 1fr;
-        gap: 30px;
+.inventory-page .car-title .year {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #ffff00 !important;
+}
+
+.inventory-page .car-title .make-model {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #ffffff !important;
+}
+
+.inventory-page .car-price {
+    padding: 8px 16px !important;
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border-radius: 20px !important;
+    min-width: 80px !important;
+    text-align: center !important;
+    box-shadow: 0 2px 8px rgba(255, 255, 0, 0.3) !important;
+}
+
+.inventory-page .price-text {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.inventory-page .car-specifications {
+    padding: 16px !important;
+    background: #2a2a2a !important;
+    border-bottom: 1px solid #3a3a3a !important;
+    flex: 1 !important;
+}
+
+.inventory-page .specs-single-column {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.inventory-page .spec-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.inventory-page .spec-icon {
+    font-size: 14px !important;
+    width: 16px !important;
+    color: #ffff00 !important;
+    flex-shrink: 0 !important;
+}
+
+.inventory-page .spec-label {
+    font-weight: 600 !important;
+    min-width: 60px !important;
+    color: #cccccc !important;
+    flex-shrink: 0 !important;
+}
+
+.inventory-page .spec-value {
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    word-break: break-word !important;
+}
+
+.inventory-page .carfax-section {
+    padding: 12px 16px !important;
+    background: #1a1a1a !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.inventory-page .carfax-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.inventory-page .carfax-text {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+}
+
+.inventory-page .carfax-placeholder {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+
+.inventory-page .carfax-logo.disabled {
+    background: #444444 !important;
+    opacity: 0.6 !important;
+    cursor: default !important;
+}
+
+.inventory-page .carfax-logo.disabled .carfax-text {
+    color: #888888 !important;
+}
+
+.inventory-page .owner-badge {
+    padding: 4px 8px !important;
+    background: #28a745 !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.inventory-page .value-badge {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 4px 8px !important;
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border-radius: 12px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 2px 4px rgba(255, 255, 0, 0.3) !important;
+}
+
+.inventory-page .badge-icon {
+    font-size: 12px !important;
+}
+
+.inventory-page .badge-text {
+    font-weight: 700 !important;
+}
+
+/* Monthly Payment Component */
+.inventory-page .monthly-payment-component {
+    display: flex !important;
+    align-items: center !important;
+    background: #1a1a1a !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.inventory-page .payment-info {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 16px !important;
+    background: #1a1a1a !important;
+}
+
+.inventory-page .payment-amount {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #00ff00 !important;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.3) !important;
+}
+
+.inventory-page .info-icon {
+    width: 20px !important;
+    height: 20px !important;
+    background: #cccccc !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.inventory-page .info-icon:hover {
+    background: #ffffff !important;
+    transform: scale(1.1) !important;
+}
+
+.inventory-page .info-icon .material-symbols-outlined {
+    font-size: 12px !important;
+    color: #666666 !important;
+}
+
+.inventory-page .payment-button {
+    width: 48px !important;
+    height: 48px !important;
+    background: #00ff00 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.inventory-page .payment-button:hover {
+    background: #00dd00 !important;
+    transform: scale(1.05) !important;
+}
+
+.inventory-page .payment-button .material-symbols-outlined {
+    font-size: 20px !important;
+    color: #ffffff !important;
+}
+
+/* Payment Tooltip Styles */
+.payment-tooltip {
+    display: none !important;
+    position: fixed !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+}
+
+.tooltip-content {
+    background: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    max-width: 350px !important;
+    width: 320px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    animation: tooltipFadeIn 0.2s ease-out !important;
+    pointer-events: auto !important;
+}
+
+.tooltip-header {
+    padding: 16px 20px 12px 20px !important;
+    border-bottom: 1px solid #2a2a2a !important;
+}
+
+.tooltip-header h3 {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+}
+
+.tooltip-body {
+    padding: 20px !important;
+}
+
+.payment-amount-large {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+.payment-details {
+    color: #cccccc !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+}
+
+.tooltip-footer {
+    padding: 0 20px 20px 20px !important;
+}
+
+.get-qualified-btn {
+    width: 100% !important;
+    background: #cccccc !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.get-qualified-btn:hover {
+    background: #ffffff !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(204, 204, 204, 0.3) !important;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0 !important;
+        transform: scale(0.9) !important;
+    }
+    to {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+}
+
+/* Mobile Responsive for Tooltip */
+@media (max-width: 480px) {
+    .tooltip-content {
+        width: 280px !important;
+        max-width: 280px !important;
     }
     
-    .inventory-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .tooltip-header {
+        padding: 14px 16px 10px 16px !important;
+    }
+    
+    .tooltip-header h3 {
+        font-size: 14px !important;
+    }
+    
+    .tooltip-body {
+        padding: 16px !important;
+    }
+    
+    .payment-amount-large {
+        font-size: 24px !important;
+    }
+    
+    .payment-details {
+        font-size: 12px !important;
+    }
+    
+    .tooltip-footer {
+        padding: 0 16px 16px 16px !important;
+    }
+    
+    .get-qualified-btn {
+        padding: 10px 16px !important;
+        font-size: 12px !important;
     }
 }
 
+/* Pagination */
+.inventory-page .pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 32px !important;
+    padding: 24px !important;
+    background: #1a1a1a !important;
+    border-radius: 12px !important;
+    border: 1px solid #2a2a2a !important;
+}
+
+.inventory-page .pagination-info {
+    font-size: 14px !important;
+    color: #cccccc !important;
+    font-weight: 500 !important;
+}
+
+.inventory-page .pagination-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.inventory-page .pagination-btn {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    color: #cccccc !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    min-width: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.inventory-page .pagination-btn:hover {
+    background: #3a3a3a !important;
+    border-color: #4a4a4a !important;
+    color: #ffffff !important;
+}
+
+.inventory-page .pagination-btn.active {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border-color: #ffff00 !important;
+}
+
+.inventory-page .pagination-btn:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.inventory-page .pagination-btn:disabled:hover {
+    background: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+    color: #cccccc !important;
+}
+
+.inventory-page .pagination-arrow {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    color: #cccccc !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+}
+
+.inventory-page .pagination-arrow:hover {
+    background: #3a3a3a !important;
+    border-color: #4a4a4a !important;
+    color: #ffffff !important;
+}
+
+.inventory-page .pagination-arrow:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.inventory-page .pagination-arrow:disabled:hover {
+    background: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+    color: #cccccc !important;
+}
+
+.inventory-page .pagination-numbers {
+    display: flex !important;
+    gap: 4px !important;
+}
+
+.inventory-page .pagination-number {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    color: #cccccc !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s !important;
+    min-width: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.inventory-page .pagination-number:hover {
+    background: #3a3a3a !important;
+    border-color: #4a4a4a !important;
+    color: #ffffff !important;
+}
+
+.inventory-page .pagination-number.active {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border-color: #ffff00 !important;
+}
+
+.inventory-page .pagination-dots {
+    color: #666 !important;
+    padding: 8px 4px !important;
+    font-weight: 600 !important;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
-    .inventory-layout {
-        grid-template-columns: 250px 1fr;
-        gap: 25px;
+    .inventory-page .inventory-layout {
+        grid-template-columns: 280px 1fr !important;
     }
     
-    .inventory-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .inventory-page .filter-sidebar {
+        padding: 20px !important;
     }
     
-    .filters-sidebar {
-        padding: 20px 15px;
+    .inventory-page .inventory-content {
+        padding: 20px !important;
+    }
+    
+    .inventory-page .inventory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
     }
 }
 
 @media (max-width: 768px) {
-    .inventory-layout {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .inventory-page .inventory-layout {
+        grid-template-columns: 1fr !important;
+        margin-top: 80px !important; /* Отступ для мобильных устройств */
     }
     
-    .filters-sidebar {
-        order: 2;
-        position: static;
-        margin-top: 20px;
+    .inventory-page .filter-sidebar {
+        position: fixed !important;
+        left: -100% !important;
+        top: 80px !important; /* Отступ от header на мобильных */
+        width: 280px !important;
+        height: calc(100vh - 80px) !important; /* Высота с учетом header */
+        z-index: 1000 !important;
+        transition: left 0.3s ease !important;
+        background: #1a1a1a !important;
     }
     
-    .inventory-content {
-        order: 1;
-        padding: 20px;
+    .inventory-page .filter-sidebar.active {
+        left: 0 !important;
     }
     
-    .inventory-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+    .inventory-page .inventory-content {
+        padding: 16px !important;
     }
     
-    .recently-viewed-grid {
-        grid-template-columns: 1fr;
+    .inventory-page .inventory-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
     }
     
-    .inventory-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
+    .inventory-page .pagination {
+        flex-direction: column !important;
+        gap: 12px !important;
     }
     
-    .sort-section {
-        justify-content: space-between;
+    .inventory-page .pagination-controls {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
     }
     
-    .results-info {
-        text-align: center;
+    .inventory-page .dealer-info-section {
+        flex-direction: column !important;
+        gap: 8px !important;
     }
     
-    .pagination {
-        justify-content: center;
-        flex-direction: column;
-        gap: 15px;
+    .inventory-page .car-title-price {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    
+    .inventory-page .car-price {
+        align-self: flex-end !important;
+    }
+    
+    .inventory-page .filter-sections {
+        gap: 12px !important;
+    }
+    
+    .inventory-page .filter-section {
+        margin-bottom: 8px !important;
+    }
+    
+    .inventory-page .filter-header {
+        padding: 12px !important;
+    }
+    
+    .inventory-page .vehicle-card {
+        min-width: auto !important;
+    }
+    
+    .inventory-page .card-header {
+        padding: 12px !important;
+    }
+    
+    .inventory-page .car-specifications {
+        padding: 12px !important;
+        gap: 12px !important;
+    }
+    
+    .inventory-page .spec-item {
+        font-size: 11px !important;
+    }
+    
+    .inventory-page .spec-icon {
+        font-size: 12px !important;
+    }
+    
+    .inventory-page .spec-label {
+        min-width: 50px !important;
+    }
+    
+    .inventory-page .spec-value {
+        font-size: 11px !important;
+    }
+    
+    /* Monthly Payment Component Tablet */
+    .inventory-page .monthly-payment-component {
+        border-radius: 6px !important;
+    }
+    
+    .inventory-page .payment-info {
+        padding: 10px 14px !important;
+    }
+    
+    .inventory-page .payment-amount {
+        font-size: 15px !important;
+    }
+    
+    .inventory-page .payment-button {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    
+    .inventory-page .payment-button .material-symbols-outlined {
+        font-size: 18px !important;
     }
 }
 
 @media (max-width: 480px) {
-    .inventory-grid {
-        grid-template-columns: 1fr;
+    .inventory-page .inventory-layout {
+        margin-top: 80px !important; /* Отступ для маленьких экранов */
     }
     
-    .specs {
-        flex-wrap: wrap;
-        gap: 8px;
+    .inventory-page .inventory-content {
+        padding: 12px !important;
     }
     
-    .card-header {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
+    .inventory-page .filter-sidebar {
+        width: 100% !important;
+        top: 80px !important; /* Отступ от header */
     }
     
-    .card-actions {
-        justify-content: space-between;
+    .inventory-page .filter-section {
+        margin-bottom: 6px !important;
     }
     
-    .page-numbers {
-        justify-content: center;
+    .inventory-page .filter-header {
+        padding: 10px !important;
+        font-size: 14px !important;
     }
     
-    .recently-viewed h2 {
-        font-size: 20px;
+    .inventory-page .vehicle-card {
+        min-width: auto !important;
+    }
+    
+    .inventory-page .card-header {
+        padding: 10px !important;
+    }
+    
+    .inventory-page .header-left {
+        flex: 1 !important;
+    }
+    
+    .inventory-page .header-right {
+        gap: 4px !important;
+    }
+    
+    .inventory-page .car-title-price {
+        padding: 12px !important;
+    }
+    
+    .inventory-page .car-title {
+        gap: 2px !important;
+    }
+    
+    .inventory-page .car-price {
+        padding: 6px 12px !important;
+    }
+    
+    .inventory-page .car-specifications {
+        padding: 10px !important;
+        gap: 8px !important;
+    }
+    
+    .inventory-page .specs-left, 
+    .inventory-page .specs-right {
+        gap: 6px !important;
+    }
+    
+    .inventory-page .spec-item {
+        font-size: 10px !important;
+    }
+    
+    .inventory-page .spec-icon {
+        font-size: 11px !important;
+    }
+    
+    .inventory-page .spec-label {
+        min-width: 45px !important;
+    }
+    
+    .inventory-page .spec-value {
+        font-size: 10px !important;
+    }
+    
+    .inventory-page .pagination {
+        padding: 16px !important;
+        gap: 12px !important;
+    }
+    
+    .inventory-page .pagination-controls {
+        gap: 4px !important;
+    }
+    
+    .inventory-page .pagination-btn {
+        padding: 6px 8px !important;
+        min-width: 32px !important;
+        font-size: 12px !important;
+    }
+    
+    .inventory-page .pagination-number {
+        padding: 6px 8px !important;
+        min-width: 32px !important;
+        font-size: 12px !important;
+    }
+    
+    /* Monthly Payment Component Mobile */
+    .inventory-page .monthly-payment-component {
+        flex-direction: column !important;
+        border-radius: 6px !important;
+    }
+    
+    .inventory-page .payment-info {
+        padding: 8px 12px !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    .inventory-page .payment-amount {
+        font-size: 14px !important;
+    }
+    
+    .inventory-page .info-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    .inventory-page .info-icon .material-symbols-outlined {
+        font-size: 10px !important;
+    }
+    
+    .inventory-page .payment-button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .inventory-page .payment-button .material-symbols-outlined {
+        font-size: 16px !important;
     }
 }
 
-@media (max-width: 900px) {
-    .inventory-card {
-        width: 98vw;
-        margin: 0 auto 24px auto;
-    }
-    .vehicle-image img {
-        height: 160px;
-    }
-    .specs {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Material Icons */
+.inventory-page .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
 }
-@media (max-width: 600px) {
-    .inventory-card {
-        width: 100vw;
-        border-radius: 0;
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    .vehicle-image img {
-        height: 120px;
-    }
-    .specs {
-        grid-template-columns: 1fr 1fr;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Print styles */
-@media print {
-    .filters-sidebar,
-    .pagination,
-    .card-actions {
-        display: none;
-    }
-    
-    .inventory-layout {
-        grid-template-columns: 1fr;
-    }
-    
-    .inventory-card {
-        break-inside: avoid;
-        margin-bottom: 20px;
-    }
+.inventory-page .inventory-grid .vehicle-card {
+    animation: fadeIn 0.5s ease-out !important;
 }
 
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 18px 0 18px;
-    background: transparent;
+
+
+/* Fallback image styling for inventory */
+.inventory-page .fallback-image {
+    opacity: 0.8;
+    filter: grayscale(30%);
+    transition: all 0.3s ease;
+}
+
+.inventory-page .fallback-image:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* No image placeholder for inventory (keeping for future use) */
+.inventory-page .no-image-placeholder {
     width: 100%;
-    min-height: 48px;
-}
-.compare-checkbox {
-    color: #fff;
-    font-size: 1rem;
+    height: 200px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 6px;
-    cursor: pointer;
+    border-radius: 10px 10px 0 0;
+    border: 2px dashed #444;
+}
+
+.inventory-page .no-image-placeholder .material-symbols-outlined {
+    font-size: 48px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.inventory-page .no-image-placeholder p {
+    color: #888;
+    font-size: 14px;
     font-weight: 500;
-    user-select: none;
+    margin: 0;
+    text-align: center;
 }
-.compare-checkbox input[type="checkbox"] {
-    accent-color: #ffd600;
-    margin-right: 2px;
-}
-.favorite {
-    color: #ffd600;
-    cursor: pointer;
-    font-size: 26px;
-    transition: color 0.2s, transform 0.2s;
-    margin: 0 10px;
-}
-.favorite:hover {
-    color: #fff;
-    transform: scale(1.15);
-}
+
+
+

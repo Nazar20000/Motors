@@ -19,5 +19,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Run reference seeders
+        $this->call([
+            BrandSeeder::class,
+            CarModelSeeder::class,
+            ColorSeeder::class,
+            BodyTypeSeeder::class,
+            TransmissionSeeder::class,
+            CarSeeder::class,
+            CarEquipmentSeeder::class,
+            ContactRequestSeeder::class,
+        ]);
     }
 }

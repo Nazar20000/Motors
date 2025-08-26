@@ -60,6 +60,19 @@ return [
             'report' => false,
         ],
 
+        // CRM SFTP disk for lead delivery (ADF XML files)
+        'crm_sftp' => [
+            'driver' => 'sftp',
+            'host' => env('CRM_SFTP_HOST'),
+            'port' => env('CRM_SFTP_PORT', 22),
+            'username' => env('CRM_SFTP_USERNAME'),
+            'password' => env('CRM_SFTP_PASSWORD'),
+            // Optional settings
+            'root' => env('CRM_SFTP_DIRECTORY', '/'),
+            'timeout' => env('CRM_SFTP_TIMEOUT', 30),
+            'throw' => true,
+        ],
+
     ],
 
     /*

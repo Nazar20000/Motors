@@ -1,6 +1,6 @@
-/* Car Finder Page Specific Styles */
+/* Специфичные стили страницы поиска автомобилей */
 .car-finder-page {
-    margin-top: 70px;
+    margin-top: 80px;
     padding: 60px 0;
     background-color: #1a1a1a;
     min-height: 100vh;
@@ -210,7 +210,7 @@
     to { transform: rotate(360deg); }
 }
 
-/* Form Validation Styles */
+/* Стили валидации формы */
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
@@ -243,7 +243,7 @@
     gap: 5px;
 }
 
-/* Success Modal */
+/* Модальное окно успеха */
 .success-modal {
     position: fixed;
     top: 0;
@@ -315,7 +315,7 @@
     background-color: #e6e600;
 }
 
-/* Responsive Design */
+/* Адаптивный дизайн */
 @media (max-width: 768px) {
     .car-finder-page {
         padding: 40px 0;
@@ -380,7 +380,7 @@
     }
 }
 
-/* Print styles */
+/* Стили для печати */
 @media print {
     .car-finder-page {
         margin-top: 0;
